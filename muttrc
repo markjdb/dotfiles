@@ -1,0 +1,56 @@
+set from = "markjdb@gmail.com"
+set realname = "Mark Johnston"
+
+set imap_user = "markjdb@gmail.com"
+
+# Remote flders
+set folder = "imaps://imap.gmail.com:993"
+set spoolfile = "+INBOX"
+set postponed = "+[Gmail]/Drafts"
+
+# Local folders
+set header_cache=~/.mutt/cache/headers
+set message_cachedir=~/.mutt/cache/bodies
+set certificate_file=~/.mutt/certificates
+
+set smtp_url = "smtp://markjdb@smtp.gmail.com:587/"
+
+set move = no
+set imap_keepalive = 300
+
+# Config
+set sort = "threads"
+set sort_aux = "last-date-received"
+
+set timeout=15
+set mail_check=60
+
+bind index p noop
+bind pager p noop
+
+color normal     white black
+color attachment brightyellow black
+color hdrdefault cyan black
+color indicator  black cyan
+color markers    brightred black
+color quoted     green black
+color signature  cyan black
+color status     brightgreen blue
+color tilde      blue black
+color tree       red black
+color header     brightgreen black ^From:
+color header     brightcyan black ^To:
+color header     brightcyan black ^Reply-To:
+color header     brightcyan black ^Cc:
+color header     brightblue black ^Subject:
+
+macro index gi  "<change-folder>imaps://imap.gmail.com:993<enter>" "Go to inbox"
+macro index gfb "<change-folder>=FreeBSD<enter>" "Go to FreeBSD"
+macro index gow "<change-folder>=orchestra@uwaterloo<enter>" "Go to orchestra"
+macro index gfr "<change-folder>=Friends<enter>" "Go to Friends"
+macro index gsv "<change-folder>=SVPlatform<enter>" "Go to SV Platform"
+
+macro index Sfb "<save-message>=FreeBSD<enter>y" "Save to FreeBSD"
+macro index Sow "<save-message>=orchestra@uwaterloo<enter>y" "Save to orchestra"
+macro index Sfr "<save-message>=Friends<enter>y" "Save to Friends"
+macro index Ssv "<save-message>=SVPlatform<enter>y" "Save to SV Platform"

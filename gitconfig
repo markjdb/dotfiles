@@ -1,0 +1,7 @@
+[user]
+	name = Mark Johnston
+	email = markjdb@gmail.com
+[color]
+	ui = auto
+[core]
+	pager = less -R

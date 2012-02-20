@@ -1,0 +1,10 @@
+*default host=cvsup11.FreeBSD.org
+*default release=cvs delete use-rel-suffix compress
+*default prefix=/var/db
+*default base=/usr
+
+tag=RELENG_8_2_0_RELEASE
+src-all
+
+#tag=.
+#src-all
