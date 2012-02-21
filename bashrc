@@ -14,6 +14,13 @@ export CVS_RSH=ssh
 export EDITOR=`which vim`
 export BUG_PROJECT=/home/mark/src/bugs
 
+case $(uname) in
+FreeBSD)
+	export GOOS=freebsd
+	export GOROOT=/usr/local/go
+	;;
+esac
+
 source ~/bin/set_csdb
 
 # Aliases
