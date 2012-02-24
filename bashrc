@@ -9,6 +9,8 @@ PS1='\[\033[01;34m\]$(prompt_prefix)\[\033[00m\]\[\033[01;32m\]\u\[\033[00m\]: \
 
 set -o vi
 
+export HISTFILESIZE=5000
+
 export CVSROOT=m6johnst@linux.student.cs.uwaterloo.ca:/u/m6johnston/cvsroot
 export CVS_RSH=ssh
 export EDITOR=`which vim`
