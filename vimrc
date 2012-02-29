@@ -68,3 +68,7 @@ function! s:CloseIfOnlyNerdTreeLeft()
     endif
   endif
 endfunction
+
+" OpenCL code highlighting
+au BufRead,BufNewFile *.cl set filetype=opencl
+au! Syntax opencl source $VIM/vim73/syntax/cl.vim
