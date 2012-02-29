@@ -16,7 +16,7 @@ set certificate_file=~/.mutt/certificates
 set smtp_url = "smtp://markjdb@smtp.gmail.com:587/"
 
 set move = no
-set imap_keepalive = 300
+set imap_keepalive = 60
 
 # Config
 set sort = "threads"
