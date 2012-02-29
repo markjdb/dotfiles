@@ -5,45 +5,28 @@
 FILES="bashrc gitconfig muttrc screenrc vimrc xinitrc"
 
 usage() {
-	echo "usage: $(basename ${0}) < cmp | install | merge >"
+	echo "usage: $(basename ${0}) < cmp | install | merge > [ file ]"
 	exit 1
 }
 
 run() {
-	local ret
-
-	ret=0
 	for file in $FILES; do
+		[ -n "$2" -a ${file} != "$2" ] && continue
 		eval "$1"
-		[ $? -ne 0 ] && ret=1
 	done
-	return $ret
 }
 
-cmpfiles() {
-	run 'cmp ${DOTFILESDIR}/${file} ${HOME}/.${file}'
-	return $?
-}
+[ $# -ne 1 -a $# -ne 2 ] && usage
 
-installfiles() {
-	cmpfiles && run 'cp -f ${DOTFILESDIR}/${file} ${HOME}/.${file}'
-}
-
-mergefiles() {
-	run 'cp -f ${HOME}/.${file} ${DOTFILESDIR}/${file}'
-}
-
-[ $# -ne 1 ] && usage
-
-case $@ in
+case $1 in
 cmp)
-	cmpfiles
+	run 'diff ${DOTFILESDIR}/${file} ${HOME}/.${file}' $2
 	;;
 install)
-	installfiles
+	run 'cp -f ${DOTFILESDIR}/${file} ${HOME}/.${file}' $2
 	;;
 merge)
-	mergefiles
+	run 'cp -f ${HOME}/.${file} ${DOTFILESDIR}/${file}' $2
 	;;
 *)
 	usage
