@@ -1,26 +1,26 @@
-set from = "markjdb@gmail.com"
-set realname = "Mark Johnston"
+set from="markjdb@gmail.com"
+set realname="Mark Johnston"
 
-set imap_user = "markjdb@gmail.com"
+set imap_user="markjdb@gmail.com"
 
 # Remote flders
-set folder = "imaps://imap.gmail.com:993"
-set spoolfile = "+INBOX"
-set postponed = "+[Gmail]/Drafts"
+set folder="imaps://imap.gmail.com:993"
+set spoolfile="+INBOX"
+set postponed="+[Gmail]/Drafts"
 
 # Local folders
 set header_cache=~/.mutt/cache/headers
 set message_cachedir=~/.mutt/cache/bodies
 set certificate_file=~/.mutt/certificates
 
-set smtp_url = "smtp://markjdb@smtp.gmail.com:587/"
+set smtp_url="smtp://markjdb@smtp.gmail.com:587/"
 
-set move = no
-set imap_keepalive = 60
+set move=no
+set imap_keepalive=60
 
 # Config
-set sort = "threads"
-set sort_aux = "last-date-received"
+set sort="threads"
+set sort_aux="last-date-received"
 
 set timeout=15
 set mail_check=60
