@@ -60,6 +60,12 @@ alias gits='git status'
 alias gitd='git diff'
 alias gitp='git pull'
 
+case $(uname) in
+Linux)
+	alias gmake='make'
+	;;
+esac
+
 alias sshwat='ssh -Y m6johnst@linux.student.cs.uwaterloo.ca'
 alias ll='ls -lAh'
 
