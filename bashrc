@@ -26,7 +26,8 @@ FreeBSD)
 	;;
 esac
 
-source ~/bin/set_csdb
+[ -f $HOME/bin/set_csdb ] && source $HOME/bin/set_csdb
+[ -f /usr/local/etc/bash_completion ] && source /usr/local/etc/bash_completion
 
 # Aliases
 alias mocp='mocp -T nightly_theme'
@@ -58,6 +59,7 @@ alias gitc='git commit'
 alias gitl='git log'
 alias gits='git status'
 alias gitd='git diff'
+alias gitp='git pull'
 
 alias myip='curl whatismyip.org && echo'
 alias gdb='gdb -q' # Supress banner
