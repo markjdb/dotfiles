@@ -4,7 +4,7 @@ xset m 7 10
 datestr='date +"%F %R"'
 case $(uname) in
 FreeBSD)
-	batterystr='sysctl -n hw.acpi.battery.life'
+	[ sysctl -q hw.acpi.battery.life ] && batterystr='sysctl -n hw.acpi.battery.life'
 	;;
 Linux)
 	batterystr='acpi -b | awk '"'"'gsub(/,*/,"",$4) {print $4}'"'"
@@ -12,7 +12,11 @@ Linux)
 esac
 
 while true; do
-	xsetroot -name "$(eval $datestr), Battery: $(eval $batterystr)"
+	if [ -z "$batterystr" ]; then
+		xsetroot -name "$(eval $datestr)"
+	else
+		xsetroot -name "$(eval $datestr), Battery: $(eval $batterystr)"
+	fi
 	sleep 30
 done &
 
