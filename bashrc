@@ -7,6 +7,11 @@ prompt_prefix()
     stat .svn > /dev/null 2>&1 && echo "svn " && return
 }
 
+mkdircd()
+{
+    mkdir -p $1 && cd $1
+}
+
 PS1='\[\033[01;34m\]$(prompt_prefix)\[\033[00m\]\[\033[01;32m\]\u\[\033[00m\]: \[\033[01;31m\]\w/\[\033[00m\]\[\033[01;33m\]\[\033[00m\]$ '
 
 set -o vi
@@ -36,8 +41,7 @@ alias rm='rm -i'
 alias mv='mv -i'
 alias cp='cp -i'
 
-alias sshwat='ssh -Y m6johnst@linux.student.cs.uwaterloo.ca'
-
+alias grep='grep --color=auto'
 case $(uname) in
 Linux)
     alias ls='ls --color=auto'
@@ -47,11 +51,6 @@ FreeBSD)
     ;;
 esac
 
-alias lss='ls'
-alias lls='ls'
-alias sl='ls'
-alias grep='grep --color=auto'
-
 alias gitco='git checkout'
 alias gita='git add'
 alias gitb='git branch'
@@ -60,6 +59,9 @@ alias gitl='git log'
 alias gits='git status'
 alias gitd='git diff'
 alias gitp='git pull'
+
+alias sshwat='ssh -Y m6johnst@linux.student.cs.uwaterloo.ca'
+alias ll='ls -lAh'
 
 alias myip='curl whatismyip.org && echo'
 alias gdb='gdb -q' # Supress banner
