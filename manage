@@ -22,7 +22,8 @@ cmp)
 	run 'diff ${DOTFILESDIR}/${file} ${HOME}/.${file}' $2
 	;;
 install)
-	[ ! -x $HOME/bin/manage ] && ln -s $DOTFILESDIR/manage $HOME/bin/manage
+	[ -d $HOME/bin ] && [ ! -x $HOME/bin/manage ] && \
+	    ln -s $DOTFILESDIR/manage $HOME/bin/manage-dotfiles
 	run 'cp -f ${DOTFILESDIR}/${file} ${HOME}/.${file}' $2
 	;;
 merge)
