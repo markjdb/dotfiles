@@ -1,6 +1,8 @@
 prompt_prefix()
 {
-    git branch > /dev/null 2>&1 && echo "git " && return
+    git branch > /dev/null 2>&1 && \
+        echo "git ("$(git branch 2> /dev/null | grep '*' | awk '{print $2}')") " && \
+	return
     stat CVS > /dev/null 2>&1 && echo "CVS " && return
     stat .svn > /dev/null 2>&1 && echo "svn " && return
 }
@@ -59,3 +61,4 @@ alias gitd='git diff'
 
 alias myip='curl whatismyip.org && echo'
 alias gdb='gdb -q' # Supress banner
+alias mytree="find . -type d | sed -e 1d -e 's/[^-][^\/]*\//--/g' -e 's/^/ /' -e 's/-/|-/'"

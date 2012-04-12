@@ -30,10 +30,10 @@ cmp)
 install)
 	[ -d $HOME/bin ] && [ ! -x $HOME/bin/manage-dotfiles ] && \
 	    ln -s $DOTFILESDIR/manage $HOME/bin/manage-dotfiles
-	run 'cp -f ${DOTFILESDIR}/${file} ${HOME}/.${file}' $2
+	run 'cp -f $DOTFILESDIR/$file $HOME/.$file' $2
 	;;
 merge)
-	run 'cp -f ${HOME}/.${file} ${DOTFILESDIR}/${file}' $2
+	run 'cp -f $HOME/.$file $DOTFILESDIR/$file' $2
 	;;
 *)
 	usage
