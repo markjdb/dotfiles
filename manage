@@ -1,6 +1,5 @@
 #!/bin/sh
 
-
 [ -z "$DOTFILESDIR" ] && DOTFILESDIR=${HOME}/dotfiles
 FILES="bashrc gitconfig muttrc screenrc vimrc xinitrc"
 
@@ -23,6 +22,7 @@ cmp)
 	run 'diff ${DOTFILESDIR}/${file} ${HOME}/.${file}' $2
 	;;
 install)
+	[ ! -x $HOME/bin/manage ] && ln -s $DOTFILESDIR/manage $HOME/bin/manage
 	run 'cp -f ${DOTFILESDIR}/${file} ${HOME}/.${file}' $2
 	;;
 merge)

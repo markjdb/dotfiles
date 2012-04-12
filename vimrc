@@ -50,24 +50,26 @@ function! ResCur()
   endif
 endfunction
 
-au VimEnter * NERDTree
+"au VimEnter * NERDTree
 
 " Never start with the cursor in the NERDTree buffer.
-autocmd VimEnter * wincmd l
+"autocmd VimEnter * wincmd l
 
-autocmd WinEnter * call s:CloseIfOnlyNerdTreeLeft()
+"autocmd WinEnter * call s:CloseIfOnlyNerdTreeLeft()
 
 " Close all open buffers on entering a window if the only
 " buffer that's left is the NERDTree buffer.
-function! s:CloseIfOnlyNerdTreeLeft()
-  if exists("t:NERDTreeBufName")
-    if bufwinnr(t:NERDTreeBufName) != -1
-      if winnr("$") == 1
-        q
-      endif
-    endif
-  endif
-endfunction
+"function! s:CloseIfOnlyNerdTreeLeft()
+"  if exists("t:NERDTreeBufName")
+"    if bufwinnr(t:NERDTreeBufName) != -1
+"      if winnr("$") == 1
+"        q
+"      endif
+"    endif
+"  endif
+"endfunction
+
+au Bufread,BufNewFile *.go set filetype=go
 
 " OpenCL code highlighting
 au BufRead,BufNewFile *.cl set filetype=opencl

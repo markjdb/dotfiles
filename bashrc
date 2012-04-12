@@ -11,6 +11,7 @@ set -o vi
 
 export HISTFILESIZE=5000
 
+export PATH=$PATH:$HOME/bin:$HOME/bin/gnu-arm/bin:/usr/local/9/bin
 export CVSROOT=m6johnst@linux.student.cs.uwaterloo.ca:/u/m6johnston/cvsroot
 export CVS_RSH=ssh
 export EDITOR=`which vim`
