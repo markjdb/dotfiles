@@ -2,7 +2,7 @@ prompt_prefix()
 {
     git branch > /dev/null 2>&1 && \
         echo "git ("$(git branch 2> /dev/null | grep '*' | awk '{print $2}')") " && \
-	return
+        return
     stat CVS > /dev/null 2>&1 && echo "CVS " && return
     stat .svn > /dev/null 2>&1 && echo "svn " && return
 }
@@ -10,6 +10,27 @@ prompt_prefix()
 mkdircd()
 {
     mkdir -p $1 && cd $1
+}
+
+cleanpatch()
+{
+    for file in $(find . -name '*.orig' -o -name '*.rej'); do
+        echo $file
+        [ -f "${file%.orig}" -o -f "${file%.rej}" ] && rm -f "$file"
+    done
+}
+
+update-repos()
+{
+    pushd .
+    cd $HOME/bin && git pull && git push
+    if [ -z "$DOTFILESDIR" ]; then
+        cd $HOME/dotfiles
+    else
+        cd $DOTFILESDIR
+    fi
+    git pull && git push
+    popd
 }
 
 PS1='\[\033[01;34m\]$(prompt_prefix)\[\033[00m\]\[\033[01;32m\]\u\[\033[00m\]: \[\033[01;31m\]\w/\[\033[00m\]\[\033[01;33m\]\[\033[00m\]$ '
@@ -26,9 +47,9 @@ export BUG_PROJECT=/home/mark/src/bugs
 
 case $(uname) in
 FreeBSD)
-	export GOOS=freebsd
-	export GOROOT=/usr/local/go
-	;;
+    export GOOS=freebsd
+    export GOROOT=/usr/local/go
+    ;;
 esac
 
 [ -f $HOME/bin/set_csdb ] && source $HOME/bin/set_csdb
@@ -45,9 +66,11 @@ alias grep='grep --color=auto'
 case $(uname) in
 Linux)
     alias ls='ls --color=auto'
+    alias gmake='make'
     ;;
 FreeBSD)
     alias ls='ls -G'
+    alias makeport='sudo make config-recursive install clean'
     ;;
 esac
 
@@ -60,15 +83,8 @@ alias gits='git status'
 alias gitd='git diff'
 alias gitp='git pull'
 
-case $(uname) in
-Linux)
-	alias gmake='make'
-	;;
-esac
-
 alias sshwat='ssh -Y m6johnst@linux.student.cs.uwaterloo.ca'
 alias ll='ls -lAh'
 
-alias myip='curl whatismyip.org && echo'
 alias gdb='gdb -q' # Supress banner
 alias mytree="find . -type d | sed -e 1d -e 's/[^-][^\/]*\//--/g' -e 's/^/ /' -e 's/-/|-/'"
