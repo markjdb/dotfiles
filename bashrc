@@ -16,7 +16,7 @@ cleanpatch()
 {
     for file in $(find . -name '*.orig' -o -name '*.rej'); do
         echo $file
-        [ -f "${file%.orig}" -o -f "${file%.rej}" ] && rm -f "$file"
+        [ -f "${file%.orig}" -a -f "${file%.rej}" ] && rm -f "$file"
     done
 }
 
@@ -88,3 +88,4 @@ alias ll='ls -lAh'
 
 alias gdb='gdb -q' # Supress banner
 alias mytree="find . -type d | sed -e 1d -e 's/[^-][^\/]*\//--/g' -e 's/^/ /' -e 's/-/|-/'"
+alias startx='exec startx'
