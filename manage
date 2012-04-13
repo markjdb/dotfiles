@@ -25,11 +25,12 @@ run() {
 
 case $1 in
 cmp)
-    run 'diff ${DOTFILESDIR}/${file} ${HOME}/.${file}' $2
+    run 'diff $DOTFILESDIR/$file $HOME/.$file' $2
     ;;
 install)
     [ -d $HOME/bin ] && [ ! -x $HOME/bin/manage-dotfiles ] && \
         ln -s $DOTFILESDIR/manage $HOME/bin/manage-dotfiles
+    run 'cmp -s $DOTFILESDIR/$file $HOME/.$file || echo $file'
     run 'cp -f $DOTFILESDIR/$file $HOME/.$file' $2
     ;;
 merge)
