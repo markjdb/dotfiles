@@ -89,3 +89,4 @@ alias ll='ls -lAh'
 alias gdb='gdb -q' # Supress banner
 alias mytree="find . -type d | sed -e 1d -e 's/[^-][^\/]*\//--/g' -e 's/^/ /' -e 's/-/|-/'"
 alias startx='exec startx'
+alias mounts='mount | column -t'
