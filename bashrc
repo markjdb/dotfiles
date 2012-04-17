@@ -62,7 +62,7 @@ alias rm='rm -i'
 alias mv='mv -i'
 alias cp='cp -i'
 
-alias grep='grep --color=auto'
+alias grep='grep --color=auto --exclude="*\.git*"'
 case $(uname) in
 Linux)
     alias ls='ls --color=auto'

@@ -4,7 +4,7 @@ xset m 7 10
 datestr='date +"%F %R"'
 case $(uname) in
 FreeBSD)
-	[ sysctl -q hw.acpi.battery.life ] && batterystr='sysctl -n hw.acpi.battery.life'
+	sysctl -q hw.acpi.battery.life && batterystr='sysctl -n hw.acpi.battery.life'
 	;;
 Linux)
 	batterystr='acpi -b | awk '"'"'gsub(/,*/,"",$4) {print $4}'"'"
