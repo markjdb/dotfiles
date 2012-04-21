@@ -71,6 +71,7 @@ Linux)
 FreeBSD)
     alias ls='ls -G'
     alias makeport='sudo make config-recursive install clean'
+    which -s ascii || alias ascii='cat /usr/share/misc/ascii'
     ;;
 esac
 
