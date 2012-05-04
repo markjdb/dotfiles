@@ -75,6 +75,8 @@ FreeBSD)
     ;;
 esac
 
+which -s most && alias man='man -P most'
+
 alias gitco='git checkout'
 alias gita='git add'
 alias gitb='git branch'
