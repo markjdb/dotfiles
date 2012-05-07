@@ -10,7 +10,9 @@ set ruler
 set nu          "line numbering
 set lbr!	"wrap lines at word boundaries
 set foldmethod=manual
-set cursorline
+if version >= 700
+  set cursorline
+endif
 set guifont=terminus\ 9
 set history=1000
 "set wildmode=longest:full
