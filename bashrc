@@ -75,7 +75,7 @@ FreeBSD)
     ;;
 esac
 
-which -s most && alias man='man -P most'
+alias man='man -P less'
 
 alias gitco='git checkout'
 alias gita='git add'
@@ -94,3 +94,4 @@ alias mytree="find . -type d | sed -e 1d -e 's/[^-][^\/]*\//--/g' -e 's/^/ /' -e
 alias startx='exec startx'
 alias mounts='mount | column -t'
 alias unsrc='tar -C ~/src -xvf'
+alias df='df -h'
