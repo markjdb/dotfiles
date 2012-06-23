@@ -26,6 +26,14 @@ cleanpatch()
     done
 }
 
+ssh()
+{
+    echo -n -e "\033k$1\033\\"
+    /usr/bin/ssh $@
+    echo -n -e "\033k`hostname -s`\033\\"
+}
+echo -n -e "\033k`hostname -s`\033\\"
+
 PS1='\[\033[01;34m\]$(prompt_prefix)\[\033[00m\]\[\033[01;32m\]\u@\h\[\033[00m\]: \[\033[01;31m\]\w/\[\033[00m\]\[\033[01;33m\]\[\033[00m\]$ '
 
 set -o vi

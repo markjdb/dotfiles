@@ -31,11 +31,11 @@ install)
     [ -d $HOME/bin ] && [ ! -x $HOME/bin/manage-dotfiles ] && \
         ln -s $DOTFILESDIR/manage $HOME/bin/manage-dotfiles
     run 'cmp -s $DOTFILESDIR/$file $HOME/.$file || echo $file' $2
-    run 'cp -f $DOTFILESDIR/$file $HOME/.$file' $2
+    run '[ -f $DOTFILESDIR/$file ] && cp -f $DOTFILESDIR/$file $HOME/.$file' $2
     ;;
 merge)
     run 'cmp -s $DOTFILESDIR/$file $HOME/.$file || echo $file' $2
-    run 'cp -f $HOME/.$file $DOTFILESDIR/$file' $2
+    run '[ -f $HOME/.$file ] && cp -f $HOME/.$file $DOTFILESDIR/$file' $2
     ;;
 *)
     usage
