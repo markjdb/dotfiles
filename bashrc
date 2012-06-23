@@ -1,3 +1,9 @@
+case $(hostname) in
+wtl-lview-*)
+    . ${HOME}/.bash_sv
+    ;;
+esac
+
 prompt_prefix()
 {
     git branch > /dev/null 2>&1 && \
@@ -20,20 +26,7 @@ cleanpatch()
     done
 }
 
-update-repos()
-{
-    pushd .
-    cd $HOME/bin && git pull && git push
-    if [ -z "$DOTFILESDIR" ]; then
-        cd $HOME/dotfiles
-    else
-        cd $DOTFILESDIR
-    fi
-    git pull && git push
-    popd
-}
-
-PS1='\[\033[01;34m\]$(prompt_prefix)\[\033[00m\]\[\033[01;32m\]\u\[\033[00m\]: \[\033[01;31m\]\w/\[\033[00m\]\[\033[01;33m\]\[\033[00m\]$ '
+PS1='\[\033[01;34m\]$(prompt_prefix)\[\033[00m\]\[\033[01;32m\]\u@\h\[\033[00m\]: \[\033[01;31m\]\w/\[\033[00m\]\[\033[01;33m\]\[\033[00m\]$ '
 
 set -o vi
 
@@ -75,7 +68,7 @@ FreeBSD)
     ;;
 esac
 
-which -s most && alias man='man -P most'
+which most >/dev/null 2>&1 && alias man='man -P most'
 
 alias gitco='git checkout'
 alias gita='git add'
@@ -94,3 +87,14 @@ alias mytree="find . -type d | sed -e 1d -e 's/[^-][^\/]*\//--/g' -e 's/^/ /' -e
 alias startx='exec startx'
 alias mounts='mount | column -t'
 alias unsrc='tar -C ~/src -xvf'
+
+case $(hostname) in
+test*)
+    alias tcl=/m/mjohnston_lab/fwtest/bin/tcl
+    alias showres='tcl reserve res | grep mjohnston'
+    ;;
+wtl-lview-*)
+    alias locatesrc='locate -d ${HOME}/db/srcfiles.db'
+    alias updatesrcdb='updatedb -o ${HOME}/db/srcfiles.db -U /vobs'
+    ;;
+esac

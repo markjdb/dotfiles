@@ -77,4 +77,4 @@ au Bufread,BufNewFile *.go set filetype=go
 au BufRead,BufNewFile *.cl set filetype=opencl
 au! Syntax opencl source $VIM/vim73/syntax/cl.vim
 
-au FileType cpp setl sw=2 expandtab
+au FileType cpp setl sw=4 expandtab
