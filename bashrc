@@ -32,7 +32,7 @@ set -o vi
 
 export HISTFILESIZE=5000
 
-export PATH=$PATH:$HOME/bin:$HOME/bin/gnu-arm/bin:/usr/local/9/bin
+export PATH=$PATH:${HOME}/bin:${HOME}/bin/arm-none-eabi/bin:/usr/local/9/bin
 export CVSROOT=m6johnst@linux.student.cs.uwaterloo.ca:/u/m6johnston/cvsroot
 export CVS_RSH=ssh
 export EDITOR=`which vim`
@@ -68,7 +68,7 @@ FreeBSD)
     ;;
 esac
 
-which most >/dev/null 2>&1 && alias man='man -P most'
+alias man='man -P less'
 
 alias gitco='git checkout'
 alias gita='git add'
@@ -87,6 +87,7 @@ alias mytree="find . -type d | sed -e 1d -e 's/[^-][^\/]*\//--/g' -e 's/^/ /' -e
 alias startx='exec startx'
 alias mounts='mount | column -t'
 alias unsrc='tar -C ~/src -xvf'
+alias df='df -h'
 
 case $(hostname) in
 test*)
