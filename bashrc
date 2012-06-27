@@ -1,5 +1,5 @@
 case $(hostname) in
-wtl-lview-*)
+wtl-lview-*|test*)
     . ${HOME}/.bash_sv
     ;;
 esac
@@ -100,10 +100,15 @@ alias df='df -h'
 case $(hostname) in
 test*)
     alias tcl=/m/mjohnston_lab/fwtest/bin/tcl
+    alias tpc=/m/mjohnston_lab/fwtest/TLA/bin/tpc
+    alias findall=/m/mjohnston_lab/fwtest/tools/bin/findall
     alias showres='tcl reserve res | grep mjohnston'
     ;;
 wtl-lview-*)
     alias locatesrc='locate -d ${HOME}/db/srcfiles.db'
     alias updatesrcdb='updatedb -o ${HOME}/db/srcfiles.db -U /vobs'
+    ;;
+TPC-*)
+    alias undecimate=/m/mjohnston_lab/fwtest/TLA/bin/undecimate
     ;;
 esac
