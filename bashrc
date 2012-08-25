@@ -1,5 +1,5 @@
 case $(hostname) in
-wtl-lview-*|test*)
+wtl-lview-*|test*|wtllab-test-*)
     . ${HOME}/.bash_sv
     ;;
 esac
@@ -34,15 +34,22 @@ settitle()
 ssh()
 {
     settitle $1
-    /usr/bin/ssh $@
+    $(which ssh) $@
     settitle $(hostname -s)
 }
+
+# Make sure our parent process is screen(1) first.
+if [ "$(ps -p $PPID -o comm=)" = screen ]; then
+    settitle $(hostname -s)
+fi
 
 PS1='\[\033[01;34m\]$(prompt_prefix)\[\033[00m\]\[\033[01;32m\]\u@\h\[\033[00m\]: \[\033[01;31m\]\w/\[\033[00m\]\[\033[01;33m\]\[\033[00m\]$ '
 
 set -o vi
 
-export HISTFILESIZE=5000
+export HISTFILESIZE=100000
+export HISTSIZE=10000
+shopt -s histappend
 
 export PATH=$PATH:${HOME}/bin
 export EDITOR=`which vim`
@@ -99,8 +106,32 @@ alias mounts='mount | column -t'
 alias unsrc='tar -C ~/src -xvf'
 alias df='df -h'
 
+cin()
+{
+    local cmsgfile
+
+    expr $(hostname -s) : wtl-lview-* || return
+    cmsgfile=$(mktemp)
+    if [ $? -ne 0 ]; then
+	cmsgfile=/tmp/commit
+        echo "" > $cmsgfile
+    fi
+
+    if [ -z "$EDITOR" ]; then
+        vim $cmsgfile
+    else
+        $EDITOR $cmsgfile
+    fi
+
+    cleartool ci -cfile $cmsgfile $@
+    echo 1>&2 "cin(): left commit message in $cmsgfile"
+}
+
 case $(hostname) in
-test*)
+oddish)
+    alias startx='sudo kldload i915kms && startx'
+    ;;
+test*|wtllab-test-*)
     alias tcl=/m/mjohnston_lab/fwtest/bin/tcl
     alias tpc=/m/mjohnston_lab/fwtest/TLA/bin/tpc
     alias findall=/m/mjohnston_lab/fwtest/tools/bin/findall
@@ -108,12 +139,14 @@ test*)
     ;;
 wtl-lview-*)
     alias locatesrc='locate -d ${HOME}/db/srcfiles.db'
-    alias updatesrcdb='updatedb -o ${HOME}/db/srcfiles.db -U /vobs'
+    alias updatesrcdb='updatedb -o ${HOME}/db/srcfiles.db -U /view/mjohnston_pts_cd_platform/vobs -l 0'
+    alias cout='cleartool co -nc -unr'
+    alias unco='cleartool unco -rm'
     ;;
 TPC-*)
-    alias undecimate=/m/mjohnston_lab/fwtest/TLA/bin/undecimate
-    ;;
-oddish)
-    alias startx='sudo kldload i915kms && startx'
+    alias undecimate='sudo /m/mjohnston_lab/fwtest/TLA/bin/undecimate'
+    alias startscdpd='sudo /usr/local/etc/rc.d/0002.serviceLauncher.sh start &&
+                      sudo /usr/local/etc/rc.d/svscdpd.sh start'
+    alias svlog='cat /var/log/svlog'
     ;;
 esac
