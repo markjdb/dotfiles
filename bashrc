@@ -44,9 +44,7 @@ set -o vi
 
 export HISTFILESIZE=5000
 
-export PATH=$PATH:${HOME}/bin:${HOME}/bin/arm-none-eabi/bin:/usr/local/9/bin
-export CVSROOT=m6johnst@linux.student.cs.uwaterloo.ca:/u/m6johnston/cvsroot
-export CVS_RSH=ssh
+export PATH=$PATH:${HOME}/bin
 export EDITOR=`which vim`
 export BUG_PROJECT=/home/mark/src/bugs
 
