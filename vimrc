@@ -73,8 +73,7 @@ endfunction
 
 au Bufread,BufNewFile *.go set filetype=go
 
-" OpenCL code highlighting
-au BufRead,BufNewFile *.cl set filetype=opencl
-au! Syntax opencl source $VIM/vim73/syntax/cl.vim
-
 au FileType cpp,python,sh setl sw=4 expandtab
+
+" Mark files that start with '#!' as executable
+au BufWritePost * if getline(1) =~ "^#!" | silent !chmod u+x %
