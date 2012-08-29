@@ -38,6 +38,11 @@ ssh()
     settitle $(hostname -s)
 }
 
+ipod_quirk()
+{
+    usbconfig add_dev_quirk_vplh 0x05ac 0x1261 0 65535 UQ_MSC_NO_SYNC_CACHE
+}
+
 # Make sure our parent process is screen(1) first.
 if [ "$(ps -p $PPID -o comm=)" = screen ]; then
     settitle $(hostname -s)
