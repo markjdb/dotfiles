@@ -110,10 +110,15 @@ cin()
 {
     local cmsgfile
 
+    if ! which cleartool >/dev/null 2>&1; then
+        echo 1>&2 "cin: can't check in, cleartool isn't present"
+        return 1
+    fi
+
     expr $(hostname -s) : wtl-lview-* || return
     cmsgfile=$(mktemp)
     if [ $? -ne 0 ]; then
-	cmsgfile=/tmp/commit
+        cmsgfile=/tmp/commit
         echo "" > $cmsgfile
     fi
 
@@ -123,8 +128,29 @@ cin()
         $EDITOR $cmsgfile
     fi
 
+    if [ "$(stat -c '%s' $cmsgfile)" = 0 ]; then
+        echo 1>&2 "cin: aborting due to empty commit message"
+        rm -f $cmsgfile
+        return 1
+    fi
+
     cleartool ci -cfile $cmsgfile $@
-    echo 1>&2 "cin(): left commit message in $cmsgfile"
+    echo 1>&2 "cin: left commit message in $cmsgfile"
+}
+
+sview()
+{
+    if [ $# -ne 1 ]; then
+        echo 1>&2 "usage: sview < view >"
+        return 1
+    elif ! which cleartool >/dev/null 2>&1; then
+        echo 1>&2 "sview: can't set view, cleartool isn't present"
+        return 1
+    fi
+
+    settitle $1
+    cleartool setview mjohnston_$1
+    settitle $(hostname -s)
 }
 
 case $(hostname) in
@@ -150,3 +176,5 @@ TPC-*)
     alias svlog='cat /var/log/svlog'
     ;;
 esac
+# Below line added by Sandvine logon script
+if [[ -f /etc/profile.d/sandvine.rc ]]; then . /etc/profile.d/sandvine.rc; fi
