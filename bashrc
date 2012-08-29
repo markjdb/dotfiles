@@ -40,7 +40,15 @@ ssh()
 
 ipod_quirk()
 {
-    usbconfig add_dev_quirk_vplh 0x05ac 0x1261 0 65535 UQ_MSC_NO_SYNC_CACHE
+    case $(uname) in
+    FreeBSD)
+        usbconfig add_dev_quirk_vplh 0x05ac 0x1261 0 65535 UQ_MSC_NO_SYNC_CACHE
+        ;;
+    *)
+        echo 1>&2 "ipod_quirk: this function only works on FreeBSD"
+        return 1
+        ;;
+    esac
 }
 
 # Make sure our parent process is screen(1) first.
