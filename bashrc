@@ -58,6 +58,7 @@ shopt -s histappend
 
 export PATH=$PATH:${HOME}/bin
 export EDITOR=`which vim`
+export PAGER='/usr/bin/less -i'
 export BUG_PROJECT=/home/mark/src/bugs
 
 case $(uname) in
@@ -90,7 +91,7 @@ FreeBSD)
     ;;
 esac
 
-alias man='man -P less'
+alias man="man -P 'less -isR'"
 
 alias gitco='git checkout'
 alias gita='git add'
