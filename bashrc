@@ -40,7 +40,15 @@ ssh()
 
 ipod_quirk()
 {
-    usbconfig add_dev_quirk_vplh 0x05ac 0x1261 0 65535 UQ_MSC_NO_SYNC_CACHE
+    case $(uname) in
+    FreeBSD)
+        usbconfig add_dev_quirk_vplh 0x05ac 0x1261 0 65535 UQ_MSC_NO_SYNC_CACHE
+        ;;
+    *)
+        echo 1>&2 "ipod_quirk: this function only works on FreeBSD"
+        return 1
+        ;;
+    esac
 }
 
 # Make sure our parent process is screen(1) first.
@@ -116,10 +124,15 @@ cin()
 {
     local cmsgfile
 
+    if ! which cleartool >/dev/null 2>&1; then
+        echo 1>&2 "cin: can't check in, cleartool isn't present"
+        return 1
+    fi
+
     expr $(hostname -s) : wtl-lview-* || return
     cmsgfile=$(mktemp)
     if [ $? -ne 0 ]; then
-	cmsgfile=/tmp/commit
+        cmsgfile=/tmp/commit
         echo "" > $cmsgfile
     fi
 
@@ -129,8 +142,29 @@ cin()
         $EDITOR $cmsgfile
     fi
 
+    if [ "$(stat -c '%s' $cmsgfile)" = 0 ]; then
+        echo 1>&2 "cin: aborting due to empty commit message"
+        rm -f $cmsgfile
+        return 1
+    fi
+
     cleartool ci -cfile $cmsgfile $@
-    echo 1>&2 "cin(): left commit message in $cmsgfile"
+    echo 1>&2 "cin: left commit message in $cmsgfile"
+}
+
+sview()
+{
+    if [ $# -ne 1 ]; then
+        echo 1>&2 "usage: sview < view >"
+        return 1
+    elif ! which cleartool >/dev/null 2>&1; then
+        echo 1>&2 "sview: can't set view, cleartool isn't present"
+        return 1
+    fi
+
+    settitle $1
+    cleartool setview mjohnston_$1
+    settitle $(hostname -s)
 }
 
 case $(hostname) in
