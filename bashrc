@@ -129,6 +129,7 @@ alias startx='exec startx'
 alias mounts='mount | column -t'
 alias unsrc='tar -C ~/src -xvf'
 alias df='df -h'
+alias mutt='settitle mail && mutt && settitle $(hostname -s)'
 
 cin()
 {
