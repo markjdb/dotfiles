@@ -51,12 +51,22 @@ ipod_quirk()
     esac
 }
 
+PPROC=$(ps -p $PPID -o comm=)
+
 # Make sure our parent process is screen(1) first.
 if [ "$(ps -p $PPID -o comm=)" = screen ]; then
     settitle $(hostname -s)
 fi
 
-PS1='\[\033[01;34m\]$(prompt_prefix)\[\033[00m\]\[\033[01;32m\]\u@\h\[\033[00m\]: \[\033[01;31m\]\w/\[\033[00m\]\[\033[01;33m\]\[\033[00m\]$ '
+if [ $(uname) = FreeBSD -a $PPROC = sshd ]; then
+    PS1='\[\033[01;31m\]$(prompt_prefix)\[\033[00m\]\[\033[01;35m\]\u@\h\[\033[00m\]: '
+    PS1="$PS1"'\[\033[01;34m\]\w/\[\033[00m\]\[\033[00m\]$ '
+else
+    PS1='\[\033[01;34m\]$(prompt_prefix)\[\033[00m\]\[\033[01;32m\]\u@\h\[\033[00m\]: '
+    PS1="$PS1"'\[\033[01;31m\]\w/\[\033[00m\]\[\033[00m\]$ '
+fi
+
+unset PPROC
 
 set -o vi
 
