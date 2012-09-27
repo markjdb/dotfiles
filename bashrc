@@ -78,6 +78,7 @@ export PATH=$PATH:${HOME}/bin
 export EDITOR=`which vim`
 export PAGER='/usr/bin/less -i'
 export BUG_PROJECT=/home/mark/src/bugs
+export LC_CTYPE=en_US.UTF-8
 
 case $(uname) in
 FreeBSD)
@@ -130,6 +131,11 @@ alias mounts='mount | column -t'
 alias unsrc='tar -C ~/src -xvf'
 alias df='df -h'
 alias mutt='settitle mail && mutt && settitle $(hostname -s)'
+
+godoc()
+{
+    $(which godoc) $@ | less
+}
 
 cin()
 {
