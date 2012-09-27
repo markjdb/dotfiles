@@ -7,7 +7,7 @@ esac
 prompt_prefix()
 {
     git branch > /dev/null 2>&1 && \
-        echo "git ("$(git branch 2> /dev/null | grep '*' | awk '{print $2}')") " && \
+        echo "git ("$(git branch 2> /dev/null | awk '/\*/ {print $2}')") " && \
         return
     stat CVS > /dev/null 2>&1 && echo "CVS " && return
     stat .svn > /dev/null 2>&1 && echo "svn " && return
