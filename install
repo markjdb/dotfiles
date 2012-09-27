@@ -1,0 +1,19 @@
+#!/bin/sh
+
+[ -z "$DOTFILESDIR" ] && DOTFILESDIR=${HOME}/dotfiles
+FILES="bash_login bashrc gdbinit gitconfig muttrc screenrc vimrc xinitrc"
+FORCE=no
+
+usage()
+{
+    echo "usage: $(basename ${0}) [ -f ]"
+    exit 1
+}
+
+if [ $# -gt 1 ] || [ $# -eq 1 -a "$1" != '-f' ]; then
+    usage
+fi
+
+for file in $FILES ; do
+    ln $1 ${DOTFILESDIR}/$file ${HOME}/.$file
+done
