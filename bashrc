@@ -88,7 +88,7 @@ FreeBSD)
     ;;
 esac
 
-[ -f $HOME/bin/set_csdb ] && source $HOME/bin/set_csdb
+[ -f $HOME/bin/scripts/set_csdb ] && source $HOME/bin/scripts/set_csdb
 [ -f /usr/local/etc/bash_completion ] && source /usr/local/etc/bash_completion
 
 # Aliases
@@ -132,8 +132,8 @@ alias mounts='mount | column -t'
 alias unsrc='tar -C ~/src -xvf'
 alias df='df -h'
 alias mutt='settitle mail && mutt && settitle $(hostname -s)'
-alias wav2flac='for file in *.wav ; do flac $file ; done'
 alias ripcd='settitle CDs && cdparanoia -B && sleep 2 && camcontrol eject cd0'
+alias wav2flac='for file in *.wav ; do flac $file ; done'
 
 godoc()
 {
