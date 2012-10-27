@@ -33,7 +33,7 @@ settitle()
 
 ssh()
 {
-    settitle $1
+    settitle "${@: -1}"
     $(which ssh) $@
     settitle $(hostname -s)
 }
@@ -133,6 +133,7 @@ alias unsrc='tar -C ~/src -xvf'
 alias df='df -h'
 alias mutt='settitle mail && mutt && settitle $(hostname -s)'
 alias wav2flac='for file in *.wav ; do flac $file ; done'
+alias ripcd='settitle CDs && cdparanoia -B && sleep 2 && camcontrol eject cd0'
 
 godoc()
 {
