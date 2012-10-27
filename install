@@ -15,5 +15,5 @@ if [ $# -gt 1 ] || [ $# -eq 1 -a "$1" != '-f' ]; then
 fi
 
 for file in $FILES ; do
-    ln $1 ${DOTFILESDIR}/$file ${HOME}/.$file
+    ln -s $1 ${DOTFILESDIR}/$file ${HOME}/.$file
 done
