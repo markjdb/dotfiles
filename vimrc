@@ -73,7 +73,11 @@ endfunction
 
 au Bufread,BufNewFile *.go set filetype=go
 
-au FileType cpp,python,sh setl sw=4 expandtab
+au FileType python,sh setl sw=4 expandtab
+au FileType cpp setl sw=2 expandtab
 
 " Mark files that start with '#!' as executable
 au BufWritePost * if getline(1) =~ "^#!" | silent !chmod u+x %
+
+set rtp+=$GOROOT/misc/vim
+filetype plugin indent on
