@@ -74,11 +74,12 @@ export HISTFILESIZE=100000
 export HISTSIZE=10000
 shopt -s histappend
 
-export PATH=$PATH:${HOME}/bin
+export PATH=$PATH:${HOME}/bin:${HOME}/bin/scripts
 export EDITOR=`which vim`
 export PAGER='/usr/bin/less -i'
 export BUG_PROJECT=/home/mark/src/bugs
 export LC_CTYPE=en_US.UTF-8
+export CVS_RSH=ssh
 
 case $(uname) in
 FreeBSD)
@@ -131,6 +132,7 @@ alias mounts='mount | column -t'
 alias unsrc='tar -C ~/src -xvf'
 alias df='df -h'
 alias mutt='settitle mail && mutt && settitle $(hostname -s)'
+alias wav2flac='for file in *.wav ; do flac $file ; done'
 
 godoc()
 {
