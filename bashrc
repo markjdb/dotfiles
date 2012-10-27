@@ -33,7 +33,7 @@ settitle()
 
 ssh()
 {
-    settitle $1
+    settitle "${@: -1}"
     $(which ssh) $@
     settitle $(hostname -s)
 }
@@ -130,6 +130,7 @@ alias mounts='mount | column -t'
 alias unsrc='tar -C ~/src -xvf'
 alias df='df -h'
 alias mutt='settitle mail && mutt && settitle $(hostname -s)'
+alias ripcd='settitle CDs && cdparanoia -B && sleep 2 && camcontrol eject cd0'
 
 cin()
 {
