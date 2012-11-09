@@ -16,4 +16,9 @@ fi
 
 for file in $FILES ; do
     ln -s $1 ${DOTFILESDIR}/$file ${HOME}/.$file
+    case $file in
+    muttrc)
+        mkdir -p ${HOME}/.mutt/cache
+        ;;
+    esac
 done
