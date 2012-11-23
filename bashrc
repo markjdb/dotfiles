@@ -89,7 +89,11 @@ FreeBSD)
 esac
 
 [ -f $HOME/bin/scripts/set_csdb ] && source $HOME/bin/scripts/set_csdb
-[ -f /usr/local/etc/bash_completion ] && source /usr/local/etc/bash_completion
+if [ -f /usr/local/share/bash-completion/bash_completion.sh ]; then
+    source /usr/local/share/bash-completion/bash_completion.sh
+elif [ -f /usr/local/etc/bash_completion ]; then
+    source /usr/local/etc/bash_completion
+fi
 
 # Aliases
 alias mocp='mocp -T nightly_theme'
