@@ -1,7 +1,7 @@
 #!/bin/sh
 
 [ -z "$DOTFILESDIR" ] && DOTFILESDIR=${HOME}/dotfiles
-FILES="bash_login bashrc gdbinit gitconfig irssi/config muttrc screenrc vimrc xinitrc"
+FILES="bash_login bashrc gdbinit gitconfig irssi/config muttrc screenrc subversion/config vimrc xinitrc"
 
 usage()
 {
@@ -18,8 +18,11 @@ for file in $FILES ; do
     muttrc)
         mkdir -p ${HOME}/.mutt/cache
         ;;
-    irssi*)
+    irssi/*)
         mkdir -p ${HOME}/.irssi
+        ;;
+    subversion/*)
+        mkdir -p ${HOME}/.subversion
         ;;
     esac
     ln -s $1 ${DOTFILESDIR}/$file ${HOME}/.$file
