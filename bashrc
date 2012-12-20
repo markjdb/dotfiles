@@ -68,11 +68,10 @@ fi
 
 unset PPROC
 
-set -o vi
-
 export HISTFILESIZE=100000
 export HISTSIZE=10000
 shopt -s histappend
+set -o vi
 
 export PATH=$PATH:${HOME}/bin:${HOME}/bin/scripts
 export EDITOR=`which vim`
@@ -97,12 +96,12 @@ fi
 
 # Aliases
 alias mocp='mocp -T nightly_theme'
+alias grep='grep --color=auto --exclude="*\.git*"'
 
 alias rm='rm -i'
 alias mv='mv -i'
 alias cp='cp -i'
 
-alias grep='grep --color=auto --exclude="*\.git*"'
 case $(uname) in
 Linux)
     alias ls='ls --color=auto'
@@ -126,7 +125,14 @@ alias gits='git status'
 alias gitd='git diff'
 alias gitp='git pull'
 
-alias sshwat='ssh -Y m6johnst@linux.student.cs.uwaterloo.ca'
+alias svna='svn add'
+alias svnl='svn log | less'
+alias svns='svn status'
+alias svnu='svn update'
+
+alias sshff='ssh markj@freefall.freebsd.org'
+alias sshhub='ssh markj@hub.freebsd.org'
+alias sshwat='ssh m6johnst@linux.student.cs.uwaterloo.ca'
 alias ll='ls -lAh'
 
 alias gdb='gdb -q' # Supress banner
