@@ -143,7 +143,17 @@ alias unsrc='tar -C ~/src -xvf'
 alias df='df -h'
 alias mutt='settitle mail && mutt && settitle $(hostname -s)'
 alias ripcd='settitle CDs && cdparanoia -B && sleep 2 && camcontrol eject cd0'
-alias wav2flac='for file in *.wav ; do flac $file ; done'
+alias wav2flac_dir='for file in *.wav ; do flac $file ; done'
+
+aiff2mp3()
+{
+    if [ $# -ne 1 ]; then
+        echo "aiff2mp3: no input file specified"
+        return 1
+    fi
+
+    ffmpeg -i "$1" -f mp3 -acodec libmp3lame -ab 320000 -ar 44100 "${1%.aiff}.mp3"
+}
 
 godoc()
 {
