@@ -1,7 +1,8 @@
 #!/bin/sh
 
 [ -z "$DOTFILESDIR" ] && DOTFILESDIR=${HOME}/dotfiles
-FILES="bash_login bashrc gdbinit gitconfig irssi/config muttrc screenrc subversion/config vimrc xinitrc"
+FILES="bash_login bashrc gdbinit gitconfig irssi/config muttrc screenrc"
+FILES="$FILES ssh/config subversion/config vimrc xinitrc"
 
 usage()
 {
