@@ -126,6 +126,7 @@ alias gitd='git diff'
 alias gitp='git pull'
 
 alias svna='svn add'
+alias svnd='svn diff'
 alias svnl='svn log | less'
 alias svns='svn status'
 alias svnu='svn update'
