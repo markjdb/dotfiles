@@ -115,17 +115,19 @@ FreeBSD)
 esac
 
 alias man="man -P 'less -isR'"
+alias ll='ls -lAh'
 
 alias gitco='git checkout'
 alias gita='git add'
 alias gitb='git branch'
+alias gitd='git diff'
 alias gitc='git commit'
 alias gitl='git log'
-alias gits='git status'
-alias gitd='git diff'
 alias gitp='git pull'
+alias gits='git status'
 
 alias svna='svn add'
+alias svnc='svn commit'
 alias svnd='svn diff'
 alias svnl='svn log | less'
 alias svns='svn status'
@@ -134,7 +136,6 @@ alias svnu='svn update'
 alias sshff='ssh markj@freefall.freebsd.org'
 alias sshhub='ssh markj@hub.freebsd.org'
 alias sshwat='ssh m6johnst@linux.student.cs.uwaterloo.ca'
-alias ll='ls -lAh'
 
 alias gdb='gdb -q' # Supress banner
 alias mytree="find . -type d | sed -e 1d -e 's/[^-][^\/]*\//--/g' -e 's/^/ /' -e 's/-/|-/'"
