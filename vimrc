@@ -72,6 +72,7 @@ endfunction
 "endfunction
 
 au Bufread,BufNewFile *.go set filetype=go
+au Bufread,BufNewFile *.txt set wrap tw=80
 
 au FileType python,sh setl sw=4 expandtab
 au FileType cpp setl sw=2 expandtab
