@@ -6,8 +6,13 @@ FILES="$FILES ssh/config subversion/config vimrc xinitrc"
 
 usage()
 {
-    echo "Usage: $(basename ${0}) [ -f ]" 1>&2
-    exit 1
+    cat >&2 <<__EOF__ 
+Usage: $(basename ${0}) [ -f ]
+
+Options:
+  -f            -- Force existing files to be overwritten.
+__EOF__
+    exit ${1-1}
 }
 
 if [ $# -gt 1 ] || [ $# -eq 1 -a "$1" != '-f' ]; then
