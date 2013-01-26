@@ -73,12 +73,16 @@ export HISTSIZE=10000
 shopt -s histappend
 set -o vi
 
-export PATH=$PATH:${HOME}/bin:${HOME}/bin/scripts
+export PATH=$PATH:${HOME}/bin:${HOME}/bin/scripts:${HOME}/bin/arm/bin
 export EDITOR=`which vim`
 export PAGER='/usr/bin/less -i'
 export BUG_PROJECT=/home/mark/src/bugs
 export LC_CTYPE=en_US.UTF-8
 export CVS_RSH=ssh
+
+# For u-boot builds.
+export CROSS_COMPILE=arm-elf-
+alias ts7800='gmake distclean && gmake ts7800_config && gmake -j8 ts7800'
 
 case $(uname) in
 FreeBSD)
@@ -146,6 +150,7 @@ alias df='df -h'
 alias mutt='settitle mail && mutt && settitle $(hostname -s)'
 alias ripcd='settitle CDs && cdparanoia -B && sleep 2 && camcontrol eject cd0'
 alias wav2flac_dir='for file in *.wav ; do flac $file ; done'
+alias ts7800conn='sudo cu -s 115200 -l /dev/cuaU0'
 
 aiff2mp3()
 {
