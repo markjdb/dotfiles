@@ -199,6 +199,19 @@ cin()
     echo 1>&2 "cin: left commit message in $cmsgfile"
 }
 
+update-master()
+{
+    local curr
+
+    curr=$(git branch | awk '/^\*/{print $2}')
+    if [ -z "$curr" ]; then
+        echo "update-master: couldn't determine current branch"
+        return 1
+    fi
+
+    git checkout master && git pull && git push origin && git checkout "$curr"
+}
+
 sview()
 {
     if [ $# -ne 1 ]; then
