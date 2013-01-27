@@ -82,6 +82,7 @@ au FileType c call FreeBSD_Style()
 
 " Mark files that start with '#!' as executable
 au BufWritePost * if getline(1) =~ "^#!" | silent !chmod u+x %
+au BufWritePost * if getline(1) == "#!/bin/sh" | set filetype=sh
 
 set rtp+=$GOROOT/misc/vim
 filetype plugin indent on
