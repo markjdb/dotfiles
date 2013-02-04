@@ -76,9 +76,13 @@ au BufRead,BufNewFile *.txt set wrap tw=80
 au BufRead,BufNewFile *.email set wrap tw=72
 
 au FileType python,sh setl sw=4 expandtab
-au FileType cpp setl sw=2 expandtab
 au FileType perl setl sw=4 expandtab
+if $USER == 'mjohnston'
+au FileType cpp setl sw=4 expandtab
+else
+au FileType cpp setl sw=2 expandtab
 au FileType c call FreeBSD_Style()
+endif
 
 " Mark files that start with '#!' as executable
 au BufWritePost * if getline(1) =~ "^#!" | silent !chmod u+x %
