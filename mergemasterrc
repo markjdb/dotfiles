@@ -1,0 +1,3 @@
+AUTO_INSTALL=yes
+RUN_UPDATES=yes
+IGNORE_FILES="/etc/sysctl.conf"
