@@ -90,3 +90,5 @@ au BufWritePost * if getline(1) == "#!/bin/sh" | set filetype=sh
 
 set rtp+=$GOROOT/misc/vim
 filetype plugin indent on
+
+set shell=${SHELL}\ --rcfile\ ${HOME}/.bash_aliases\ -i
