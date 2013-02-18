@@ -91,6 +91,8 @@ FreeBSD)
 esac
 
 [ -f $HOME/bin/scripts/set_csdb ] && source $HOME/bin/scripts/set_csdb
+setdb freebsd-kernel
+
 if [ -f /usr/local/share/bash-completion/bash_completion.sh ]; then
     source /usr/local/share/bash-completion/bash_completion.sh
 elif [ -f /usr/local/etc/bash_completion ]; then
