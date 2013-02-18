@@ -5,7 +5,7 @@
 	ui = auto
 [core]
 	pager = less -R
-	excludesfile = *.sw[op]
+	excludesfile = ~/.gitignore
 [push]
 	default = current
 [alias]

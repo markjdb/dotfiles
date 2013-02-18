@@ -1,13 +1,25 @@
 #!/bin/sh
 
 [ -z "$DOTFILESDIR" ] && DOTFILESDIR=${HOME}/dotfiles
-FILES="bash_aliases bash_login bashrc gdbinit gitconfig irssi/config"
-FILES="$FILES mergemasterrc muttrc screenrc ssh/config subversion/config"
-FILES="$FILES vimrc xinitrc"
+
+FILES="bash_aliases
+       bash_login
+       bashrc
+       gdbinit
+       gitconfig
+       gitignore
+       irssi/config
+       mergemasterrc
+       muttrc
+       screenrc
+       ssh/config
+       subversion/config
+       vimrc
+       xinitrc"
 
 usage()
 {
-    cat >&2 <<__EOF__ 
+    cat >&2 <<__EOF__
 Usage: $(basename ${0}) [ -f ]
 
 Options:
