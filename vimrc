@@ -39,6 +39,10 @@ map :Q :q<CR>
 map k gk
 map j gj
 
+" Use <CR> to save a file, squawk at :w.
+nmap <CR> :write<CR>
+cabbrev w nope
+
 " Restore the seekpos from the last time we edited this file.
 augroup resCur
   autocmd!
@@ -90,5 +94,3 @@ au BufWritePost * if getline(1) == "#!/bin/sh" | set filetype=sh
 
 set rtp+=$GOROOT/misc/vim
 filetype plugin indent on
-
-set shell=${SHELL}\ --rcfile\ ${HOME}/.bash_aliases\ -i
