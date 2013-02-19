@@ -91,7 +91,7 @@ FreeBSD)
 esac
 
 [ -f $HOME/bin/scripts/set_csdb ] && source $HOME/bin/scripts/set_csdb
-setdb freebsd-kernel
+setdb freebsd-kernel >/dev/null 2>&1
 
 if [ -f /usr/local/share/bash-completion/bash_completion.sh ]; then
     source /usr/local/share/bash-completion/bash_completion.sh
@@ -175,3 +175,5 @@ sview()
 }
 
 source ${HOME}/.bash_aliases
+# Below line added by Sandvine logon script
+if [[ -f /etc/profile.d/sandvine.rc ]]; then . /etc/profile.d/sandvine.rc; fi
