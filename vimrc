@@ -26,8 +26,6 @@ colorscheme koehler
 
 filetype plugin on
 
-runtime macros/machit.vim
-
 " Jump to the column of a mark when I hit '<mark>.
 nnoremap ' `
 nnoremap ` '
