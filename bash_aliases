@@ -41,6 +41,10 @@ alias svnu='svn update'
 alias sshff='ssh markj@freefall.freebsd.org'
 alias sshhub='ssh markj@hub.freebsd.org'
 alias sshwat='ssh m6johnst@linux.student.cs.uwaterloo.ca'
+alias sshftp='ssh mjohnston@wtllab-ftp-1'
+alias sshtest='ssh mjohnston@test'
+alias sshconserver='ssh mjohnston@wtllab-conserver-1'
+alias sshtinderbox='ssh mjohnston@wtllab-tinderbox-1'
 
 alias gdb='gdb -q' # Supress banner
 alias mytree="find . -type d | sed -e 1d -e 's/[^-][^\/]*\//--/g' -e 's/^/ /' -e 's/-/|-/'"
@@ -65,7 +69,7 @@ test*|wtllab-test-*)
     ;;
 wtl-lview-*)
     alias locatesrc='locate -d ${HOME}/db/srcfiles.db'
-    alias updatesrcdb='updatedb -o ${HOME}/db/srcfiles.db -U /view/mjohnston_pts_cd_platform/vobs -l 0'
+    alias updatesrcdb='updatedb -o ${HOME}/db/srcfiles.db -U /view/mjohnston_pts_sn_platform/vobs -l 0'
     alias cout='cleartool co -nc -unr'
     alias unco='cleartool unco -rm'
     ;;
@@ -73,6 +77,8 @@ TPC-*)
     alias undecimate='sudo /m/mjohnston_lab/fwtest/TLA/bin/undecimate'
     alias startscdpd='sudo /usr/local/etc/rc.d/0002.serviceLauncher.sh start &&
                       sudo /usr/local/etc/rc.d/svscdpd.sh start'
+    alias stopscdpd='sudo /usr/local/etc/rc.d/svscdpd.sh stop'
+    alias restartscdpd='sudo /usr/local/etc/rc.d/svscdpd.sh restart'
     alias svlog='cat /var/log/svlog'
     ;;
 esac
