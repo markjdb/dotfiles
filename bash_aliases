@@ -77,8 +77,12 @@ TPC-*)
     alias undecimate='sudo /m/mjohnston_lab/fwtest/TLA/bin/undecimate'
     alias startscdpd='sudo /usr/local/etc/rc.d/0002.serviceLauncher.sh start &&
                       sudo /usr/local/etc/rc.d/svscdpd.sh start'
-    alias stopscdpd='sudo /usr/local/etc/rc.d/svscdpd.sh stop'
+    alias stopscdpd='sudo /usr/local/etc/rc.d/svscdpd.sh stop &&
+                     sudo /usr/local/etc/rc.d/0002.serviceLauncher.sh stop'
     alias restartscdpd='sudo /usr/local/etc/rc.d/svscdpd.sh restart'
     alias svlog='cat /var/log/svlog'
+    alias lsibbustatus='sudo MegaCli64 -AdpBbuCmd -GetBbuStatus -aALL'
+    alias lsibbuprops='sudo MegaCli64 -AdpBbuCmd -GetBbuProperties -aALL'
+    alias lsildinfo='sudo MegaCli64 -LDInfo -Lall -aALL'
     ;;
 esac
