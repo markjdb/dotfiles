@@ -83,6 +83,7 @@ TPC-*)
     alias svlog='cat /var/log/svlog'
     alias lsibbustatus='sudo MegaCli64 -AdpBbuCmd -GetBbuStatus -aALL'
     alias lsibbuprops='sudo MegaCli64 -AdpBbuCmd -GetBbuProperties -aALL'
+    alias lsibbumodes='sudo MegaCli64 -AdpBbuCmd -GetBbuModes -aALL'
     alias lsildinfo='sudo MegaCli64 -LDInfo -Lall -aALL'
     ;;
 esac
