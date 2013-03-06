@@ -73,7 +73,9 @@ export HISTSIZE=10000
 shopt -s histappend
 set -o vi
 
-export PATH=$PATH:${HOME}/bin:${HOME}/bin/scripts:${HOME}/bin/arm/bin
+PATH=$PATH:${HOME}/bin:${HOME}/bin/scripts:${HOME}/bin/scripts/dtrace
+PATH=$PATH:${HOME}/bin/arm/bin
+
 export EDITOR=`which vim`
 export PAGER='/usr/bin/less -i'
 export BUG_PROJECT=/home/mark/src/bugs
