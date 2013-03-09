@@ -23,7 +23,7 @@ while true; do
         batteryval=$(eval $batterystr)
         if [ $batteryval -le 3 ]; then
             wall <<__EOF__
-WARNING: Low battery!
+WARNING: Low battery! Value is ${batteryval}.
 __EOF__
         fi
         xsetroot -name "$(datestr), Battery: $batteryval"
