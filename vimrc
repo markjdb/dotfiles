@@ -20,6 +20,12 @@ set wildmenu		" Create a nice menu when auto-completing file names.
 " Keep track of where my cursor was last positioned when I exit.
 set viminfo='10,\"100,:20,%,n~/.viminfo
 
+" Keep a minimum of 5 lines above and below the cursor.
+set scrolloff=5
+
+" Enable the spell checker on text files.. Use 'zg' to add to the dictionary.
+autocmd BufRead,BufNewFile *.txt,*.email set spell
+
 colorscheme torte
 
 syntax enable
@@ -39,7 +45,7 @@ map j gj
 nmap <CR> :write<CR>
 cabbrev w nope
 
-" Restore the seekpos from the last time we edited this file.
+" Restore the seek position from the last time we edited this file.
 augroup resCur
   autocmd!
   autocmd BufWinEnter * call ResCur()
@@ -71,7 +77,6 @@ endfunction
 "  endif
 "endfunction
 
-au Bufread,BufNewFile *.go set filetype=go
 au BufRead,BufNewFile *.txt set wrap tw=80
 au BufRead,BufNewFile *.email set wrap tw=72
 
@@ -95,3 +100,6 @@ au BufNewFile svn-commit\.tmp set wrap tw=76
 
 " sh filetype detection doesn't seem to work if \".sh\" isn't used.
 au BufRead * if getline(1) == "#!/bin/sh" | set filetype=sh
+
+" Filetype detection for Go code doesn't seem to work?
+au Bufread,BufNewFile *.go set filetype=go
