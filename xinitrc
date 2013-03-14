@@ -21,7 +21,7 @@ while true; do
         xsetroot -name "$(datestr)"
     else
         batteryval=$(eval $batterystr)
-        if [ $batteryval -le 3 ]; then
+        if [ $batteryval -ge 0 -a $batteryval -le 3 ]; then
             wall <<__EOF__
 WARNING: Low battery! Value is ${batteryval}.
 __EOF__
