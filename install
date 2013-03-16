@@ -11,6 +11,7 @@ FILES="bash_aliases
        irssi/config
        mergemasterrc
        muttrc
+       rtorrent.rc
        screenrc
        ssh/config
        subversion/config
