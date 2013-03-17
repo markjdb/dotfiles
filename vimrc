@@ -24,7 +24,7 @@ set viminfo='10,\"100,:20,%,n~/.viminfo
 set scrolloff=5
 
 " Enable the spell checker on text files.. Use 'zg' to add to the dictionary.
-autocmd BufRead,BufNewFile *.txt,*.email set spell
+autocmd BufRead,BufNewFile *.txt,*.email set spell | syn off
 
 colorscheme torte
 
