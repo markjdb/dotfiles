@@ -1,5 +1,8 @@
 xset r rate 160 35
 xset m 7 10
+xset s blank
+xset s 3000
+xset dpms 0 3000 3000
 
 datestr()
 {
