@@ -1,0 +1,18 @@
+min_peers = 10
+max_peers = 100
+
+min_peers_seed = 5
+max_peers_seed = 10
+
+# XXX what does this do?
+max_uploads = 15
+
+download_rate = 1000
+upload_rate = 500
+
+session = /home/mark/torrents
+
+schedule = watch_directory,5,5,load_start=/home/mark/torrents/watch/*.torrent
+schedule = low_diskspace,5,60,close_low_diskspace=1G
+
+encryption = allow_incoming,require_RC4
