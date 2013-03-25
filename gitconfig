@@ -11,12 +11,32 @@
 [alias]
 	brd = cherry -v
 	co = checkout
-	diffr  = "!f() { git diff "$1"^.."$1"; }; f"
-	diffstat = "!f() { git diff --stat "$1"^.."$1"; }; f"
-	fbranch = "!f() { date=$(date "+%Y%m%d"); git branch $date-"$1"; git push -u origin $date-"$1"; }; f"
-	fbranchco = "!f() { date=$(date "+%Y%m%d"); git checkout -b $date-"$1"; git push -u origin $date-"$1"; }; f"
+	diffr = \
+		"!f()\
+		{\
+			git diff "$1"^.."$1";\
+		}; f"
+	diffstat = "!f()\
+		{\
+			git diff --stat "$1"^.."$1";\
+		}; f"
+	fbranch = \
+		"!f()\
+		{\
+			date=$(date "+%Y%m%d");\
+			git branch $date-"$1" master;\
+			git push -u origin $date-"$1";\
+		}; f"
+	fbranchco = \
+		"!f()\
+		{\
+			date=$(date "+%Y%m%d");\
+			git checkout master;\
+			git checkout -b $date-"$1";\
+			git push -u origin $date-"$1";\
+		}; f"
 	ls = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate
-	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' \
-	     --abbrev-commit --date=relative
+	lg = log --graph --abbrev-commit --date=relative \
+	     --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'
 	list = show --pretty="format:" --name-only
 	rem = remote -v
