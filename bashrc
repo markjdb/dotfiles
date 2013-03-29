@@ -61,6 +61,11 @@ fi
 if [ $(uname) = FreeBSD -a $PPROC = sshd ]; then
     PS1='\[\033[01;31m\]$(prompt_prefix)\[\033[00m\]\[\033[01;35m\]\u@\h\[\033[00m\]: '
     PS1="$PS1"'\[\033[01;34m\]\w\[\033[00m\]\[\033[00m\]$ '
+elif which toilet >/dev/null 2>&1; then
+    ID=$(echo ${USER}@$(hostname) | toilet -F gay -f term)
+    PS1='\[\033[01;34m\]$(prompt_prefix)\[\033[00m\]'$ID
+    PS1="$PS1"' \[\033[01;31m\]\w\[\033[00m\]\[\033[00m\]$ '
+    unset ID
 else
     PS1='\[\033[01;34m\]$(prompt_prefix)\[\033[00m\]\[\033[01;32m\]\u@\h\[\033[00m\]: '
     PS1="$PS1"'\[\033[01;31m\]\w\[\033[00m\]\[\033[00m\]$ '
