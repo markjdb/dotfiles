@@ -15,6 +15,7 @@ FILES="bash_aliases
        screenrc
        ssh/config
        subversion/config
+       tmux.conf
        vimrc
        xinitrc"
 
