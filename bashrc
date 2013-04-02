@@ -163,7 +163,8 @@ update-master()
         return 1
     fi
 
-    git checkout master && git pull && git push origin && git checkout "$curr"
+    git checkout master && git pull origin master && git pull && \
+                           git push origin && git checkout "$curr"
 }
 
 sview()
