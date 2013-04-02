@@ -35,6 +35,14 @@
 			git checkout -b $date-"$1";\
 			git push -u origin $date-"$1";\
 		}; f"
+	graphviz = \
+		"!f()\
+		{\
+			echo 'digraph git {';\
+			git log --pretty='format: %h -> { %p }' \"$@\" | \
+				sed 's/[0-9a-f][0-9a-f]*/\"&\"/g';\
+			echo '}';\
+		}; f"
 	ls = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate
 	lg = log --graph --abbrev-commit --date=relative \
 	     --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'
