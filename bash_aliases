@@ -56,6 +56,7 @@ alias mutt='settitle mail && mutt && settitle $(hostname -s)'
 alias ripcd='settitle CDs && cdparanoia -B && sleep 2 && camcontrol eject cd0'
 alias wav2flac_dir='for file in *.wav ; do flac $file ; done'
 alias ts7800conn='sudo cu -s 115200 -l /dev/cuaU0'
+alias tmux="tmux new-session -n${USER} -s${USER}@${HOSTNAME}-$$"
 
 case $(hostname) in
 oddish)
@@ -69,7 +70,7 @@ test*|wtllab-test-*)
     ;;
 wtl-lview-*)
     alias locatesrc='locate -d ${HOME}/db/srcfiles.db'
-    alias updatesrcdb='updatedb -o ${HOME}/db/srcfiles.db -U /view/mjohnston_pts_sn_platform/vobs -l 0'
+    alias updatesrcdb='mkdir -p ${HOME}/db && updatedb -o ${HOME}/db/srcfiles.db -U /view/mjohnston_pts_sn_platform2/vobs -l 0'
     alias cout='cleartool co -nc -unr'
     alias unco='cleartool unco -rm'
     ;;
@@ -80,6 +81,9 @@ TPC-*)
     alias stopscdpd='sudo /usr/local/etc/rc.d/svscdpd.sh stop &&
                      sudo /usr/local/etc/rc.d/0002.serviceLauncher.sh stop'
     alias restartscdpd='sudo /usr/local/etc/rc.d/svscdpd.sh restart'
+    alias startsfcd='sudo /usr/local/etc/rc.d/0004.svsfcd.sh start'
+    alias restartsfcd='sudo /usr/local/etc/rc.d/0004.svsfcd.sh restart'
+    alias stopsfcd='sudo /usr/local/etc/rc.d/0004.svsfcd.sh stop'
     alias svlog='cat /var/log/svlog'
     alias lsibbustatus='sudo MegaCli64 -AdpBbuCmd -GetBbuStatus -aALL'
     alias lsibbuprops='sudo MegaCli64 -AdpBbuCmd -GetBbuProperties -aALL'
