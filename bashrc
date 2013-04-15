@@ -97,8 +97,8 @@ FreeBSD)
     ;;
 esac
 
-if [ -f $HOME/bin/scripts/cscope ]; then
-    source $HOME/bin/scripts/cscope
+if [ -f $HOME/bin/scripts/cscope.sh ]; then
+    source $HOME/bin/scripts/cscope.sh
 fi
 
 if [ -f /usr/local/share/bash-completion/bash_completion.sh ]; then
