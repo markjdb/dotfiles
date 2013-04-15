@@ -106,6 +106,10 @@ elif [ -f /usr/local/etc/bash_completion ]; then
     source /usr/local/etc/bash_completion
 fi
 
+if [ -f /usr/local/share/git-core/contrib/completion/git-completion.bash ]; then
+    source /usr/local/share/git-core/contrib/completion/git-completion.bash
+fi
+
 aiff2mp3()
 {
     if [ $# -ne 1 ]; then
