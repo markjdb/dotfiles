@@ -2,22 +2,24 @@
 
 [ -z "$DOTFILESDIR" ] && DOTFILESDIR=${HOME}/dotfiles
 
-FILES="bash_aliases
-       bash_login
-       bashrc
-       gdbinit
-       gitconfig
-       gitignore
-       irssi/config
-       mergemasterrc
-       muttrc
-       rtorrent.rc
-       screenrc
-       ssh/config
-       subversion/config
-       tmux.conf
-       vimrc
-       xinitrc"
+FILES="
+bash_aliases
+bash_login
+bashrc
+gdbinit
+gitconfig
+gitignore
+irssi/config
+mergemasterrc
+muttrc
+rtorrent.rc
+screenrc
+ssh/config
+subversion/config
+tmux.conf
+vimrc
+xinitrc
+"
 
 usage()
 {
@@ -35,15 +37,12 @@ if [ $# -gt 1 ] || [ $# -eq 1 -a "$1" != '-f' ]; then
 fi
 
 for file in $FILES ; do
+    if expr $file : '[a-zA-Z][a-zA-Z]*/' >/dev/null 2>&1; then
+        mkdir -p ${HOME}/.${file%%/*}
+    fi
     case $file in
     muttrc)
         mkdir -p ${HOME}/.mutt/cache
-        ;;
-    irssi/*)
-        mkdir -p ${HOME}/.irssi
-        ;;
-    subversion/*)
-        mkdir -p ${HOME}/.subversion
         ;;
     esac
     ln -s $1 ${DOTFILESDIR}/$file ${HOME}/.$file
