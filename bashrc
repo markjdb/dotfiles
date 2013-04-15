@@ -97,8 +97,9 @@ FreeBSD)
     ;;
 esac
 
-[ -f $HOME/bin/scripts/set_csdb ] && source $HOME/bin/scripts/set_csdb
-setdb freebsd-kernel >/dev/null 2>&1
+if [ -f $HOME/bin/scripts/cscope ]; then
+    source $HOME/bin/scripts/cscope
+fi
 
 if [ -f /usr/local/share/bash-completion/bash_completion.sh ]; then
     source /usr/local/share/bash-completion/bash_completion.sh
