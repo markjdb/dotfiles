@@ -42,7 +42,7 @@ map k gk
 map j gj
 
 " Use <CR> to save a file, squawk at :w.
-nmap <CR> :write<CR>
+nnoremap <CR> :write<CR>
 cabbrev w nope
 
 " Restore the seek position from the last time we edited this file.
@@ -103,3 +103,5 @@ au BufRead * if getline(1) == "#!/bin/sh" | set filetype=sh
 
 " Filetype detection for Go code doesn't seem to work?
 au Bufread,BufNewFile *.go set filetype=go
+
+nnoremap \ :cs reset<CR>
