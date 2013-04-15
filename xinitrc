@@ -11,7 +11,6 @@ datestr()
 
 case $(uname) in
 FreeBSD)
-    sysctl -q hw.dri.debug && sudo sysctl hw.dri.debug=0
     sysctl -q hw.acpi.battery.life && batterystr='sysctl -n hw.acpi.battery.life'
     ;;
 Linux)
