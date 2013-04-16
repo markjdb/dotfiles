@@ -80,6 +80,7 @@ endfunction
 au BufRead,BufNewFile *.txt set wrap tw=80
 au BufRead,BufNewFile *.email set wrap tw=72
 
+au BufRead,BufNewFile *.gdb set sw=4 expandtab
 autocmd FileType perl,python,sh setl sw=4 expandtab
 
 if $USER == 'mjohnston'
