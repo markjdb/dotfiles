@@ -88,6 +88,8 @@ TPC-*)
     alias lsibbustatus='sudo MegaCli64 -AdpBbuCmd -GetBbuStatus -aALL'
     alias lsibbuprops='sudo MegaCli64 -AdpBbuCmd -GetBbuProperties -aALL'
     alias lsibbumodes='sudo MegaCli64 -AdpBbuCmd -GetBbuModes -aALL'
+    alias lsibbudinfo='sudo MegaCli64 -AdpBbuCmd -GetBbuDesignInfo -aALL'
+    alias lsibbucinfo='sudo MegaCli64 -AdpBbuCmd -GetBbuCapacityInfo -aALL'
     alias lsildinfo='sudo MegaCli64 -LDInfo -Lall -aALL'
     ;;
 esac
