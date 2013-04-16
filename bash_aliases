@@ -45,6 +45,7 @@ alias sshftp='ssh mjohnston@wtllab-ftp-1'
 alias sshtest='ssh mjohnston@test'
 alias sshconserver='ssh mjohnston@wtllab-conserver-1'
 alias sshtinderbox='ssh mjohnston@wtllab-tinderbox-1'
+alias sshsv='ssh -p 123 mjohnston@lab.sandvine.com'
 
 alias gdb='gdb -q' # Supress banner
 alias mytree="find . -type d | sed -e 1d -e 's/[^-][^\/]*\//--/g' -e 's/^/ /' -e 's/-/|-/'"
@@ -56,7 +57,6 @@ alias mutt='settitle mail && mutt && settitle $(hostname -s)'
 alias ripcd='settitle CDs && cdparanoia -B && sleep 2 && camcontrol eject cd0'
 alias wav2flac_dir='for file in *.wav ; do flac $file ; done'
 alias ts7800conn='sudo cu -s 115200 -l /dev/cuaU0'
-alias tmux="tmux new-session -n${USER} -s${USER}@${HOSTNAME}-$$"
 
 case $(hostname) in
 oddish)
