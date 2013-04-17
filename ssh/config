@@ -4,5 +4,10 @@ Host *.freebsd.org
 Host linux.student.cs.uwaterloo.ca
 	User m6johnst
 
-Host lab.sandvine.com
+Host *.sandvine.com
 	User mjohnston
+
+Host work
+	User mjohnston
+	HostName test
+	ProxyCommand ssh -p 123 lab.sandvine.com -W %h:%p
