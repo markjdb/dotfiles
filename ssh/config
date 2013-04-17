@@ -1,2 +1,8 @@
-Host svn.freebsd.org
+Host *.freebsd.org
 	User markj
+
+Host linux.student.cs.uwaterloo.ca
+	User m6johnst
+
+Host lab.sandvine.com
+	User mjohnston
