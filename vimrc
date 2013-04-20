@@ -45,6 +45,16 @@ map j gj
 nnoremap <CR> :write<CR>
 cabbrev w nope
 
+" Better shortcuts for navigating between splits.
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
+
+" These feel more natural to me.
+set splitbelow
+set splitright
+
 " Restore the seek position from the last time we edited this file.
 augroup resCur
   autocmd!
