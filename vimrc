@@ -104,7 +104,9 @@ autocmd FileType c call FreeBSD_Style()
 endif
 
 " Use the FreeBSD style plugin with FreeBSD code.
-autocmd Bufread,BufNewFile /vobs/fw-bsd/*.[ch],~/src/freebsd/*.[ch] call FreeBSD_Style() | set filetype=c
+autocmd BufRead,BufNewFile /vobs/fw-bsd/*.[ch],~/src/freebsd/*.[ch] call FreeBSD_Style() | set filetype=c
+
+autocmd BufRead,BufNewFile *.d set filetype=dtrace
 
 " Wrap commit messages at 76 columns.
 au BufNewFile svn-commit\.tmp set wrap tw=76
@@ -115,4 +117,5 @@ au BufRead * if getline(1) == "#!/bin/sh" | set filetype=sh
 " Filetype detection for Go code doesn't seem to work?
 au Bufread,BufNewFile *.go set filetype=go
 
+" Reset the cscope connection.
 nnoremap \ :cs reset<CR>
