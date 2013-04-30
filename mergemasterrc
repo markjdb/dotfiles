@@ -1,3 +1,14 @@
 AUTO_INSTALL=yes
 RUN_UPDATES=yes
-IGNORE_FILES="/etc/shells /etc/sysctl.conf"
+IGNORE_FILES="
+/etc/devfs.conf
+/etc/group
+/etc/hosts
+/etc/master.passwd
+/etc/motd
+/etc/newsyslog.conf
+/etc/passwd
+/etc/shells
+/etc/sysctl.conf
+/etc/syslog.conf
+"
