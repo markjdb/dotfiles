@@ -22,7 +22,6 @@ esac
 alias man="man -P 'less -isR'"
 alias ll='ls -lAh'
 
-alias gitco='git checkout'
 alias gita='git add'
 alias gitb='git branch'
 alias gitd='git diff'
@@ -61,9 +60,6 @@ alias buildkernel='make -j$(sysctl -n hw.ncpu) -DNO_KERNELCLEAN buildkernel'
 alias please=sudo
 
 case $(hostname) in
-oddish)
-    alias startx='sudo kldload i915kms && startx'
-    ;;
 test*|wtllab-test-*)
     alias tcl=/m/mjohnston_lab/fwtest/bin/tcl
     alias tpc=/m/mjohnston_lab/fwtest/TLA/bin/tpc
