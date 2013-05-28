@@ -174,6 +174,11 @@ startvbox()
     sudo kldload vboxdrv vboxnetadp
 }
 
+findf()
+{
+    find . -name "$1"
+}
+
 source ${HOME}/.bash_aliases
 # Below line added by Sandvine logon script
 if [[ -f /etc/profile.d/sandvine.rc ]]; then . /etc/profile.d/sandvine.rc; fi
