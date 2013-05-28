@@ -176,7 +176,7 @@ startvbox()
 
 findf()
 {
-    find . -name "$1"
+    find . -name "$1" -type f
 }
 
 source ${HOME}/.bash_aliases
