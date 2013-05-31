@@ -37,14 +37,11 @@ alias svnl='svn log | less'
 alias svns='svn status'
 alias svnu='svn update'
 
-alias sshff='ssh markj@freefall.freebsd.org'
-alias sshhub='ssh markj@hub.freebsd.org'
 alias sshwat='ssh m6johnst@linux.student.cs.uwaterloo.ca'
 alias sshftp='ssh mjohnston@wtllab-ftp-1'
 alias sshtest='ssh mjohnston@test'
 alias sshconserver='ssh mjohnston@wtllab-conserver-1'
 alias sshtinderbox='ssh mjohnston@wtllab-tinderbox-1'
-alias sshsv='ssh -p 123 mjohnston@lab.sandvine.com'
 
 alias gdb='gdb -q' # Supress banner
 alias mytree="find . -type d | sed -e 1d -e 's/[^-][^\/]*\//--/g' -e 's/^/ /' -e 's/-/|-/'"
