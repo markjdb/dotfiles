@@ -63,7 +63,12 @@ set -o vi
 PATH=$PATH:${HOME}/bin:${HOME}/bin/scripts:${HOME}/bin/scripts/dtrace
 PATH=$PATH:${HOME}/bin/arm/bin
 
-export EDITOR=`which vim`
+if which -s vim 2>/dev/null; then
+    export EDITOR=$(which vim)
+elif which -s vi 2>/dev/null; then
+    export EDITOR=$(which vi)
+fi
+
 export PAGER='/usr/bin/less -i'
 export BUG_PROJECT=/home/mark/src/bugs
 [ $USER != mjohnston ] && export LC_CTYPE=en_US.UTF-8
@@ -177,6 +182,11 @@ startvbox()
 findf()
 {
     find . -name "$1" -type f
+}
+
+findd()
+{
+    find . -name "$1" -type d
 }
 
 source ${HOME}/.bash_aliases
