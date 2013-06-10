@@ -63,9 +63,9 @@ set -o vi
 PATH=$PATH:${HOME}/bin:${HOME}/bin/scripts:${HOME}/bin/scripts/dtrace
 PATH=$PATH:${HOME}/bin/arm/bin
 
-if which -s vim 2>/dev/null; then
+if which vim >/dev/null 2>&1; then
     export EDITOR=$(which vim)
-elif which -s vi 2>/dev/null; then
+elif which vi >/dev/null 2>&1; then
     export EDITOR=$(which vi)
 fi
 
