@@ -16,6 +16,7 @@ rtorrent.rc
 screenrc
 ssh/config
 subversion/config
+tarsnaprc
 tmux.conf
 vimrc
 xinitrc
