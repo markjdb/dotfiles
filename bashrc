@@ -189,6 +189,10 @@ findd()
     find . -name "$1" -type d
 }
 
+ssh-setup()
+{
+    eval $(ssh-agent)
+    ssh-add
+}
+
 source ${HOME}/.bash_aliases
-# Below line added by Sandvine logon script
-if [[ -f /etc/profile.d/sandvine.rc ]]; then . /etc/profile.d/sandvine.rc; fi
