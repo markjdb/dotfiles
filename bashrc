@@ -10,7 +10,7 @@ prompt_prefix()
         echo "git ("$(git branch 2> /dev/null | awk '/\*/ {print $2}')") " && \
         return
     stat CVS > /dev/null 2>&1 && echo "CVS " && return
-    stat .svn > /dev/null 2>&1 && echo "svn " && return
+    svn info > /dev/null 2>&1 && echo "svn " && return
 }
 
 mkdircd()
