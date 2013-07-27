@@ -32,7 +32,7 @@ alias gits='git status'
 
 alias svna='svn add'
 alias svnc='svn commit'
-alias svnd='svn diff'
+alias svnd='svn diff | less'
 alias svnl='svn log | less'
 alias svns='svn status'
 alias svnu='svn update'
