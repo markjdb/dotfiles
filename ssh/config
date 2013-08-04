@@ -7,7 +7,7 @@ Host linux.student.cs.uwaterloo.ca
 Host *.sandvine.com
 	User mjohnston
 
-Host work
+Host wurk
 	User mjohnston
 	HostName test
 	ProxyCommand ssh -p 123 lab.sandvine.com -W %h:%p
