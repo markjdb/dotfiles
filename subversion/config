@@ -146,6 +146,7 @@ Makefile* = svn:eol-style=native; svn:keywords=FreeBSD=%H; svn:mime-type=text/pl
 *.7     = svn:eol-style=native; svn:keywords=FreeBSD=%H; svn:mime-type=text/plain
 *.8     = svn:eol-style=native; svn:keywords=FreeBSD=%H; svn:mime-type=text/plain
 *.9     = svn:eol-style=native; svn:keywords=FreeBSD=%H; svn:mime-type=text/plain
+*.d     = svn:eol-style=native; svn:keywords=FreeBSD=%H; svn:mime-type=text/plain
 
 *.css   = svn:eol-style=native; svn:keywords=FreeBSD=%H; svn:mime-type=text/css
 *.html  = svn:eol-style=native; svn:keywords=FreeBSD=%H; svn:mime-type=text/html
