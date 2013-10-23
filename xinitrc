@@ -3,6 +3,7 @@ xset m 7 10
 xset s blank
 xset s 3000
 xset dpms 0 3000 3000
+xset fp+ /usr/local/lib/X11/fonts/terminus-font
 
 datestr()
 {
