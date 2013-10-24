@@ -93,6 +93,8 @@ au BufRead,BufNewFile *.email set wrap tw=72
 au BufRead,BufNewFile *.gdb set sw=4 expandtab
 autocmd FileType perl,python,sh setl sw=4 expandtab
 
+au BufRead,BufNewFile t_*.test set filetype=cpp
+
 if $USER == 'mjohnston'
 " SV style calls for indentation by 4 spaces.
 autocmd FileType cpp setl sw=4 expandtab
