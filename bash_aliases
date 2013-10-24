@@ -88,6 +88,8 @@ TPC-*)
     ;;
 esac
 
-alias mkkernncnd="make -j $(sysctl -n hw.ncpu) -DNO_KERNELCLEAN -DNO_KERNELDEPEND buildkernel"
-alias mkkernnc="make -j $(sysctl -n hw.ncpu) -DNO_KERNELCLEAN buildkernel"
-alias mkkern="make -j $(sysctl -n hw.ncpu) buildkernel"
+if [ $(uname) = FreeBSD ]; then
+    alias mkkernncnd="make -j $(sysctl -n hw.ncpu) -DNO_KERNELCLEAN -DNO_KERNELDEPEND buildkernel"
+    alias mkkernnc="make -j $(sysctl -n hw.ncpu) -DNO_KERNELCLEAN buildkernel"
+    alias mkkern="make -j $(sysctl -n hw.ncpu) buildkernel"
+fi
