@@ -1,6 +1,10 @@
 Host *.freebsd.org
 	User markj
 
+Host freefall
+	User markj
+	HostName freefall.freebsd.org
+
 Host linux.student.cs.uwaterloo.ca
 	User m6johnst
 
