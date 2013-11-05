@@ -15,6 +15,7 @@ mergemasterrc
 muttrc
 rtorrent.rc
 screenrc
+signature
 ssh/config
 subversion/config
 tarsnaprc
