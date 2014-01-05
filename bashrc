@@ -6,11 +6,13 @@ esac
 
 prompt_prefix()
 {
-    git branch > /dev/null 2>&1 && \
+    git branch >/dev/null 2>&1 && \
         echo "git ("$(git branch 2> /dev/null | awk '/\*/ {print $2}')") " && \
         return
-    stat CVS > /dev/null 2>&1 && echo "CVS " && return
-    svn info > /dev/null 2>&1 && echo "svn " && return
+    stat CVS >/dev/null 2>&1 && echo "CVS " && return
+    ( svn info >/dev/null 2>&1 || \
+        svn info 2>&1 | grep -q 'Previous operation has not finished' ) && \
+        echo "svn " && return
 }
 
 mkdircd()

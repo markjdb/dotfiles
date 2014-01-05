@@ -114,7 +114,7 @@ autocmd BufRead,BufNewFile *.d set filetype=dtrace
 au BufNewFile svn-commit\.tmp set wrap tw=76
 
 " sh filetype detection doesn't seem to work if \".sh\" isn't used.
-au BufRead * if getline(1) == "#!/bin/sh" | set filetype=sh
+au BufRead * if getline(1) == "#!/bin/sh" | set filetype=sh | endif
 
 " Filetype detection for Go code doesn't seem to work?
 au Bufread,BufNewFile *.go set filetype=go
