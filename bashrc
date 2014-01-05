@@ -197,4 +197,24 @@ ssh-setup()
     ssh-add
 }
 
+mount-ipod()
+{
+    local dev
+
+    dev=$(sudo camcontrol devlist | grep 'Apple iPod' | \
+          sed 's/^.*\(da[0-9][0-9]*\),.*$/\1/')
+    if [ -z "$dev" ]; then
+        echo "mount-ipod: couldn't find iPod device" >&2
+        return 1
+    fi
+
+    sudo service devfs restart
+    mount -t msdosfs -o large /dev/$dev ${HOME}/mnt/ipod
+}
+
+unmount-ipod()
+{
+    umount ${HOME}/mnt/ipod
+}
+
 source ${HOME}/.bash_aliases
