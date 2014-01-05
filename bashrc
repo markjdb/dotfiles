@@ -62,8 +62,9 @@ export HISTSIZE=10000
 shopt -s histappend
 set -o vi
 
-PATH=$PATH:${HOME}/bin:${HOME}/bin/scripts:${HOME}/bin/scripts/dtrace
-PATH=$PATH:${HOME}/bin/arm/bin
+PATH=${PATH}:${HOME}/bin:${HOME}/bin/scripts:${HOME}/bin/scripts/dtrace
+PATH=${PATH}:${HOME}/bin/scripts/contrib
+PATH=${PATH}:${HOME}/bin/arm/bin
 
 if which vim >/dev/null 2>&1; then
     export EDITOR=$(which vim)
