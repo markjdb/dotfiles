@@ -99,8 +99,7 @@ if $USER == 'mjohnston'
 " SV style calls for indentation by 4 spaces.
 autocmd FileType cpp setl sw=4 expandtab
 else
-" In C++ I personally prefer two spaces.
-autocmd FileType cpp setl sw=2 expandtab
+autocmd FileType cpp setl sw=4 expandtab
 " FreeBSD style 4 life.
 autocmd FileType c call FreeBSD_Style()
 endif
