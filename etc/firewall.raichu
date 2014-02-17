@@ -1,0 +1,18 @@
+add divert natd ip4 from any to any via re0
+
+add allow ip from 192.168.0.0/24 to 255.255.255.255
+add allow ip from me to 192.168.0.0/24
+add allow ip from 192.168.0.0/24 to any
+
+add allow ip from any to any frag
+add allow icmp from any to any
+
+add allow tcp from any to any established
+add allow tcp from me to any setup
+add allow tcp from 192.168.0.0/24 to any setup
+
+add allow udp from me to any dst-port 53 keep-state
+add allow udp from me to any dst-port 123 keep-state
+
+add deny tcp from any to any setup
+add deny ip from any to any
