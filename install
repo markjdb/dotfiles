@@ -56,5 +56,5 @@ for file in ${FILES}; do
 done
 
 for file in ${ETCFILES}; do
-    ln -s $1 ${DOTFILESDIR}/${file}.$(hostname -s) ${HOME}/etc/$file
+    ln -s $1 ${DOTFILESDIR}/etc/${file}.$(hostname -s) ${HOME}/etc/$file
 done
