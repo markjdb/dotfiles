@@ -24,6 +24,10 @@ vimrc
 xinitrc
 "
 
+ETCFILES="
+firewall
+"
+
 usage()
 {
     cat >&2 <<__EOF__
@@ -39,7 +43,7 @@ if [ $# -gt 1 ] || [ $# -eq 1 -a "$1" != '-f' ]; then
     usage
 fi
 
-for file in $FILES ; do
+for file in ${FILES}; do
     if expr $file : '[a-zA-Z][a-zA-Z]*/' >/dev/null 2>&1; then
         mkdir -p ${HOME}/.${file%%/*}
     fi
@@ -49,4 +53,8 @@ for file in $FILES ; do
         ;;
     esac
     ln -s $1 ${DOTFILESDIR}/$file ${HOME}/.$file
+done
+
+for file in ${ETCFILES}; do
+    ln -s $1 ${DOTFILESDIR}/${file}.$(hostname -s) ${HOME}/etc/$file
 done
