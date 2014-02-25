@@ -93,3 +93,5 @@ if [ $(uname) = FreeBSD ]; then
     alias mkkernnc="make -j $(sysctl -n hw.ncpu) -DNO_KERNELCLEAN buildkernel"
     alias mkkern="make -j $(sysctl -n hw.ncpu) buildkernel"
 fi
+
+alias tmux="TERM=screen-256color tmux"
