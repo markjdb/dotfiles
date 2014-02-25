@@ -26,7 +26,8 @@ set scrolloff=5
 " Enable the spell checker on text files.. Use 'zg' to add to the dictionary.
 autocmd BufRead,BufNewFile *.txt,*.email set spell | syn off
 
-colorscheme torte
+" We support 256 colours, right?
+set t_Co=256
 
 syntax enable
 filetype on
