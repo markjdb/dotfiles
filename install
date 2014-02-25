@@ -58,3 +58,7 @@ done
 for file in ${ETCFILES}; do
     ln -s $1 ${DOTFILESDIR}/etc/${file}.$(hostname -s) ${HOME}/etc/$file
 done
+
+for file in vim/plugin/*.vim; do
+    ln -s $1 ${DOTFILESDIR}/$file ${HOME}/.vim/plugin/$(basename "${file}")
+done
