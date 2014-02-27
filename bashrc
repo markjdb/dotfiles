@@ -92,7 +92,7 @@ export DIFF_TOOL=diff
 if [ -f $HOME/bin/scripts/cscope.sh ]; then
     source $HOME/bin/scripts/cscope.sh
 fi
-if [ -f $HOME}/bin/scripts/goto.sh ]; then
+if [ -f $HOME/bin/scripts/goto.sh ]; then
     source $HOME/bin/scripts/goto.sh
 fi
 
