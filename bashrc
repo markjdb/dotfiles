@@ -87,7 +87,7 @@ FreeBSD)
     ;;
 esac
 
-export DIFF_TOOL=diff
+export DIFF_TOOL="diff -u"
 
 if [ -f $HOME/bin/scripts/cscope.sh ]; then
     source $HOME/bin/scripts/cscope.sh
