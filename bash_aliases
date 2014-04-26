@@ -51,7 +51,7 @@ alias unsrc='tar -C ~/src -xvf'
 alias df='df -h'
 alias mutt='settitle mail && mutt && settitle $(hostname -s)'
 alias ripcd='settitle CDs && cdparanoia -B && sleep 2 && camcontrol eject cd0'
-alias wav2flac_dir='for file in *.wav ; do flac $file ; done'
+alias wav2flac_dir='for file in *.wav ; do flac "$file"; done'
 alias ts7800conn='sudo cu -s 115200 -l /dev/cuaU0'
 alias please=sudo
 
