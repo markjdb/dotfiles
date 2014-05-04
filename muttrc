@@ -4,7 +4,6 @@ alternates "markj@freebsd.org"
 set realname="Mark Johnston"
 
 set imap_user="markjdb@gmail.com"
-set signature="~/.signature"
 
 # Remote folders
 set folder="imaps://imap.gmail.com:993"
