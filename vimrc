@@ -30,6 +30,7 @@ autocmd BufRead,BufNewFile *.txt,*.email set spell | syn off
 set t_Co=256
 
 syntax enable
+colorscheme jellybeans
 filetype on
 filetype plugin on
 filetype indent on
