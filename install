@@ -20,6 +20,7 @@ ssh/config
 subversion/config
 tarsnaprc
 tmux.conf
+vim
 vimrc
 xinitrc
 "
@@ -52,13 +53,14 @@ for file in ${FILES}; do
         mkdir -p ${HOME}/.mutt/cache
         ;;
     esac
+    target=${HOME}/.${file}
+    if [ -e $target -a ! -L $target ]; then
+        echo "$target exists and isn't a symlink" >&2
+        continue
+    fi
     ln -s $1 ${DOTFILESDIR}/$file ${HOME}/.$file
 done
 
 for file in ${ETCFILES}; do
     ln -s $1 ${DOTFILESDIR}/etc/${file}.$(hostname -s) ${HOME}/etc/$file
-done
-
-for file in vim/plugin/*.vim; do
-    ln -s $1 ${DOTFILESDIR}/$file ${HOME}/.vim/plugin/$(basename "${file}")
 done
