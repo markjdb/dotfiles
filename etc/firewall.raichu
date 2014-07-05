@@ -12,8 +12,8 @@ add allow tcp from 192.168.0.0/24 to any setup
 
 add allow udp from me to any 53 keep-state
 add allow udp from me to any 123 keep-state
-add allow udp from any 68 to 255.255.255.255 67 out
-add allow udp from any 67 to me 68 in
+add allow udp from any 68 to 255.255.255.255 67 in
+add allow udp from any 67 to me 68 out
 
 add deny tcp from any to any setup
 add deny ip from any to any
