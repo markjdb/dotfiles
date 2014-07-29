@@ -274,6 +274,7 @@ settings = {
     real_name = "Mark Johnston";
     user_name = "mark";
     nick = "markj";
+    chanmode_expando_strip = "yes";
   };
   "fe-text" = { actlist_sort = "refnum"; };
   "fe-common/core" = { autolog = "yes"; };
