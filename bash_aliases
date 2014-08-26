@@ -54,6 +54,7 @@ alias ripcd='settitle CDs && cdparanoia -B && sleep 2 && camcontrol eject cd0'
 alias wav2flac_dir='for file in *.wav ; do flac "$file"; done'
 alias ts7800conn='sudo cu -s 115200 -l /dev/cuaU0'
 alias please=sudo
+alias battery='sysctl -n hw.acpi.battery.life'
 
 case $(hostname) in
 test*|wtllab-test-*)
