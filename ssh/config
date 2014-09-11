@@ -1,32 +1,5 @@
-Host *.freebsd.org
-	User markj
-
 Host freefall
-	User markj
 	HostName freefall.freebsd.org
 
-Host linux.student.cs.uwaterloo.ca
-	User m6johnst
-
-Host *.sandvine.com
-	User mjohnston
-
-Host work
-	User mjohnston
-	HostName test
-	ProxyCommand ssh -p 123 lab.sandvine.com -W %h:%p
-
-Host pole
-	User m6johnst
-	HostName pole
-	ProxyCommand ssh linux.student.cs.uwaterloo.ca -W %h:%p
-
-Host strobe
-	User m6johnst
-	HostName strobe
-	ProxyCommand ssh linux.student.cs.uwaterloo.ca -W %h:%p
-
-Host bsdbuild
-	User mjohnston
-	HostName wtllab-bsdbuild-5
-	ProxyCommand ssh -p 123 lab.sandvine.com -W %h:%p
+Host *.freebsd.org
+	User markj
