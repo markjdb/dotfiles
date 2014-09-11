@@ -30,7 +30,9 @@ cleanpatch()
 
 settitle()
 {
-    echo -n -e "\033k$1\033\\"
+    if [ -n "$TMUX" ]; then
+        echo -n -e "\033k$1\033\\"
+    fi
 }
 
 ssh()
