@@ -167,6 +167,7 @@ update-master()
 
     git checkout master && git pull origin master && git pull && \
                            git push origin && git checkout "$curr"
+    git fetch upstream refs/notes/*:refs/notes/*
 }
 
 sview()
