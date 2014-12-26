@@ -106,8 +106,7 @@ autocmd FileType cpp setl sw=4 expandtab
 autocmd FileType c call FreeBSD_Style()
 endif
 
-" Use the FreeBSD style plugin with FreeBSD code.
-autocmd BufRead,BufNewFile /vobs/fw-bsd/*.[ch],~/src/freebsd/*.[ch] call FreeBSD_Style() | set filetype=c
+autocmd BufRead,BufNewFile *.[ch] call FreeBSD_Style() | set filetype=c
 
 autocmd BufRead,BufNewFile *.d set filetype=dtrace
 
