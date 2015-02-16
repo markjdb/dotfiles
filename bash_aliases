@@ -1,5 +1,3 @@
-alias ts7800='gmake distclean && gmake ts7800_config && gmake -j8 ts7800'
-
 alias mocp='mocp -T nightly_theme'
 alias grep='grep --color=auto --exclude="*\.git*"'
 
