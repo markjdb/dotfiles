@@ -11,6 +11,7 @@ gdbinit
 gitconfig
 gitignore
 irssi/config
+irssi/scripts/nickcolor.pl
 mergemasterrc
 muttrc
 rtorrent.rc
