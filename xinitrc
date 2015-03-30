@@ -37,4 +37,15 @@ __EOF__
 done &
 
 cd ~/
+if which nitrogen >/dev/null 2>&1 && [ -d ${HOME}/media/bg ]; then
+    # nitrogen is weird and doesn't let me just specify a file on the
+    # command line.
+    cat <<__EOF__ > ~/.config/nitrogen/bg-saved.cfg
+[:0.0]
+file=${HOME}/media/bg/$(ls ${HOME}/media/bg | sort -R | head -n 1)
+mode=4
+bgcolor=#000000
+__EOF__
+    nitrogen --restore
+fi
 exec dwm
