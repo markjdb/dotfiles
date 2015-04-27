@@ -42,6 +42,11 @@ ssh()
     settitle $(hostname -s)
 }
 
+svnclean()
+{
+    svn status --no-ignore | awk '{if ($1 == "I" || $1 == "?") print $2}' | xargs rm -rf
+}
+
 PPROC=$(ps -p $PPID -o comm=)
 
 # Make sure our parent process is screen(1) first.
