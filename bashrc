@@ -231,4 +231,5 @@ unmount-ipod()
     umount ${HOME}/mnt/ipod
 }
 
-source ${HOME}/.bash_aliases
+. ${HOME}/.bash_aliases
+[ -f ${HOME}/.bash_local ] && . ${HOME}/.bash_local
