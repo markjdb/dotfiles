@@ -49,7 +49,7 @@ svnclean()
 
 PPROC=$(ps -p $PPID -o comm=)
 
-if [ $(uname) = FreeBSD -a $PPROC = sshd ]; then
+if [ $(uname) = FreeBSD -a -n "$SSH_CLIENT" ]; then
     PS1='\[\033[01;31m\]$(prompt_prefix)\[\033[00m\]\[\033[01;35m\]\u\[\033[00m\]@\[\033[01;35m\]\h\[\033[00m\]: '
     PS1="$PS1"'\[\033[01;34m\]\w\[\033[00m\]\[\033[00m\] $ '
 else
