@@ -61,6 +61,7 @@ if has("cscope")
     "   'f'   file:   open the filename under cursor
     "   'i'   includes: find files that include the filename under cursor
     "   'd'   called: find functions that function under cursor calls
+    "   'a'   assigned: find assignments to the identifier under the cursor
     "
     " Below are three sets of the maps: one set that just jumps to your
     " search result, one that splits the existing vim window horizontally and
@@ -96,6 +97,7 @@ if has("cscope")
     nmap <C-\>f :cs find f <C-R>=expand("<cfile>")<CR><CR>	
     nmap <C-\>i :cs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
     nmap <C-\>d :cs find d <C-R>=expand("<cword>")<CR><CR>	
+    nmap <C-\>a :cs find a <C-R>=expand("<cword>")<CR><CR>
 
 
     " Using 'CTRL-spacebar' (intepreted as CTRL-@ by vim) then a search type
@@ -114,6 +116,7 @@ if has("cscope")
     nmap <C-@>f :scs find f <C-R>=expand("<cfile>")<CR><CR>	
     nmap <C-@>i :scs find i ^<C-R>=expand("<cfile>")<CR>$<CR>	
     nmap <C-@>d :scs find d <C-R>=expand("<cword>")<CR><CR>	
+    nmap <C-@>a :scs find a <C-R>=expand("<cword>")<CR><CR>
 
 
     " Hitting CTRL-space *twice* before the search type does a vertical 
@@ -130,6 +133,7 @@ if has("cscope")
     nmap <C-@><C-@>f :vert scs find f <C-R>=expand("<cfile>")<CR><CR>	
     nmap <C-@><C-@>i :vert scs find i ^<C-R>=expand("<cfile>")<CR>$<CR>	
     nmap <C-@><C-@>d :vert scs find d <C-R>=expand("<cword>")<CR><CR>
+    nmap <C-@><C-@>a :vert scs find a <C-R>=expand("<cword>")<CR><CR>
 
 
     """"""""""""" key map timeouts
