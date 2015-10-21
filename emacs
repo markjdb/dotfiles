@@ -43,3 +43,6 @@
 
 ; If I open a symlink, follow the symlink.
 (setq find-file-visit-truename t)
+
+; Don't create a welcome screen.
+(setq inhibit-splash-screen t)
