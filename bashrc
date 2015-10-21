@@ -49,11 +49,6 @@ svnclean()
 
 PPROC=$(ps -p $PPID -o comm=)
 
-# Make sure our parent process is screen(1) first.
-if [ "$(ps -p $PPID -o comm=)" = screen ]; then
-    settitle $(hostname -s)
-fi
-
 if [ $(uname) = FreeBSD -a $PPROC = sshd ]; then
     PS1='\[\033[01;31m\]$(prompt_prefix)\[\033[00m\]\[\033[01;35m\]\u\[\033[00m\]@\[\033[01;35m\]\h\[\033[00m\]: '
     PS1="$PS1"'\[\033[01;34m\]\w\[\033[00m\]\[\033[00m\] $ '
