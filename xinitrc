@@ -3,7 +3,8 @@ xset m 7 10
 xset s blank
 xset s 3000
 xset dpms 0 3000 3000
-xset fp+ /usr/local/lib/X11/fonts/terminus-font
+xset fp+ /usr/local/share/fonts/terminus-font
+xset fp+ /usr/local/share/fonts/webfonts
 xset b off
 
 datestr()
@@ -36,11 +37,11 @@ __EOF__
     sleep 30
 done &
 
-cd ~/
+cd ${HOME}
 if which nitrogen >/dev/null 2>&1 && [ -d ${HOME}/media/bg ]; then
     # nitrogen is weird and doesn't let me just specify a file on the
     # command line.
-    cat <<__EOF__ > ~/.config/nitrogen/bg-saved.cfg
+    cat <<__EOF__ > ${HOME}/.config/nitrogen/bg-saved.cfg
 [:0.0]
 file=${HOME}/media/bg/$(ls ${HOME}/media/bg | sort -R | head -n 1)
 mode=4
@@ -48,4 +49,7 @@ bgcolor=#000000
 __EOF__
     nitrogen --restore
 fi
+
+xrdb ${HOME}/.Xresources
+
 exec dwm
