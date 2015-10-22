@@ -8,6 +8,8 @@
 (require 'evil)
 (evil-mode 1)
 
+(require 'git)
+
 ; Save tmpfiles in /tmp rather than the current directory.
 (setq backup-directory-alist
       `((".*" . ,temporary-file-directory)))
@@ -19,8 +21,9 @@
 (my-move-key evil-motion-state-map evil-normal-state-map (kbd "RET"))
 (my-move-key evil-motion-state-map evil-normal-state-map " ")
 
-(define-key evil-normal-state-map (kbd "RET") 'save-buffer)
+(define-key evil-motion-state-map (kbd "RET") 'save-buffer)
 
+; cscope stuff. Bind keys and set a search dir for databases.
 (require 'xcscope)
 (define-key evil-normal-state-map (kbd "C-]")
             'cscope-find-global-definition-no-prompting)
@@ -46,3 +49,10 @@
 
 ; Don't create a welcome screen.
 (setq inhibit-splash-screen t)
+
+; Scroll one line at a time.
+(setq scroll-step 1)
+
+; Hide the menu bar when running in a terminal.
+(when (not (display-graphic-p))
+      (menu-bar-mode -1))
