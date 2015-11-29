@@ -9,7 +9,6 @@
 [push]
 	default = current
 [alias]
-	brd = cherry -v
 	co = checkout
 	diffr = \
 		"!f()\
@@ -20,36 +19,15 @@
 		{\
 			git diff --stat "$1"^.."$1";\
 		}; f"
-	fbranch = \
+	devbranch = \
 		"!f()\
 		{\
-			date=$(date "+%Y%m%d");\
-			git branch $date-"$1" master;\
-			git push -u origin $date-"$1";\
-		}; f"
-	fbranchco = \
-		"!f()\
-		{\
-			date=$(date "+%Y%m%d");\
-			git checkout master;\
-			git checkout -b $date-"$1";\
-			git push -u origin $date-"$1";\
-		}; f"
-	graphviz = \
-		"!f()\
-		{\
-			echo 'digraph git {';\
-			git log --pretty='format: %h -> { %p }' \"$@\" | \
-				sed 's/[0-9a-f][0-9a-f]*/\"&\"/g';\
-			echo '}';\
+			git branch dev/"$1" master;\
+			git push -u origin dev/"$1";\
 		}; f"
 	diffbase = \
 		"!f()\
 		{\
 			git diff $(git merge-base "$1" HEAD)..HEAD;\
 		}; f"
-	ls = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate
-	lg = log --graph --abbrev-commit --date=relative \
-	     --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'
-	list = show --pretty="format:" --name-only
 	rem = remote -v
