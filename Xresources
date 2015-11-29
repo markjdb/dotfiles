@@ -1,2 +1,5 @@
-XTerm*eightBitInput: false
-XTerm*eightBitOutput: true
+! Update resources with xrdb ~/.Xresources
+
+UXTerm*eightBitInput: false
+UXTerm*font: -*-terminus-medium-r-*-*-12-*-*-*-*-*-iso10646-*
+UXTerm*reverseVideo: on
