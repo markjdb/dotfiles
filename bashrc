@@ -91,12 +91,8 @@ esac
 
 export DIFF_TOOL="diff -u"
 
-if [ -f $HOME/bin/scripts/cscope.sh ]; then
-    source $HOME/bin/scripts/cscope.sh
-fi
-if [ -f $HOME/bin/scripts/goto.sh ]; then
-    source $HOME/bin/scripts/goto.sh
-fi
+[ -f $HOME/bin/scripts/cscope.sh ] && source $HOME/bin/scripts/cscope.sh
+[ -f $HOME/bin/scripts/goto.sh ] && source $HOME/bin/scripts/goto.sh
 
 if [ -f /usr/local/share/bash-completion/bash_completion.sh ]; then
     source /usr/local/share/bash-completion/bash_completion.sh
@@ -104,9 +100,8 @@ elif [ -f /usr/local/etc/bash_completion ]; then
     source /usr/local/etc/bash_completion
 fi
 
-if [ -f /usr/local/share/git-core/contrib/completion/git-completion.bash ]; then
+[ -f /usr/local/share/git-core/contrib/completion/git-completion.bash ] && \
     source /usr/local/share/git-core/contrib/completion/git-completion.bash
-fi
 
 aiff2mp3()
 {
