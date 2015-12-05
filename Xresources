@@ -3,3 +3,10 @@
 UXTerm*eightBitInput: false
 UXTerm*font: -*-terminus-medium-r-*-*-12-*-*-*-*-*-iso10646-*
 UXTerm*reverseVideo: on
+
+UXTerm*on2Clicks: regex [^/@ \n]+
+UXTerm*on3Clicks: regex [^ \n]+
+UXTerm*on4Clicks: regex [^#$]+
+UXTerm*on5Clicks: line
+
+UXTerm*VT100*translations: #override Shift <Btn1Up>: exec-formatted("firefox '%t'", PRIMARY)
