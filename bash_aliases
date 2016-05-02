@@ -103,4 +103,4 @@ alias i3lock="i3lock -c 000000"
 
 alias mytop="top -SHza -s 1"
 
-alias bootfile="sysctl kern.bootfile"
+alias bootfile="sysctl -n kern.bootfile"
