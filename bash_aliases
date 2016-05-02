@@ -100,3 +100,7 @@ alias mami="make && make install"
 alias mcam="make clean && make"
 
 alias i3lock="i3lock -c 000000"
+
+alias mytop="top -SHza -s 1"
+
+alias bootfile="sysctl kern.bootfile"
