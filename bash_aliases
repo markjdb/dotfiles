@@ -88,9 +88,9 @@ TPC-*)
 esac
 
 if [ $(uname) = FreeBSD ]; then
-    alias mkkernncnd="make -j $(sysctl -n hw.ncpu) -DNO_KERNELCLEAN -DNO_KERNELDEPEND buildkernel"
-    alias mkkernnc="make -j $(sysctl -n hw.ncpu) -DNO_KERNELCLEAN buildkernel"
-    alias mkkern="make -j $(sysctl -n hw.ncpu) buildkernel"
+    alias mkkernncnd="make -s -j $(sysctl -n hw.ncpu) -DNO_KERNELCLEAN -DNO_KERNELDEPEND buildkernel"
+    alias mkkernnc="make -s -j $(sysctl -n hw.ncpu) -DNO_KERNELCLEAN buildkernel"
+    alias mkkern="make -s -j $(sysctl -n hw.ncpu) buildkernel"
 fi
 
 alias tmux="TERM=screen-256color tmux"
