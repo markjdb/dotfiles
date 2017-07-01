@@ -207,12 +207,12 @@ mount-ipod()
     fi
 
     sudo service devfs restart
-    mount -t msdosfs -o large /dev/$dev ${HOME}/mnt/ipod
+    sudo mount -t msdosfs /dev/$dev ${HOME}/mnt/ipod
 }
 
 unmount-ipod()
 {
-    umount ${HOME}/mnt/ipod
+    sudo umount ${HOME}/mnt/ipod
 }
 
 . ${HOME}/.bash_aliases
