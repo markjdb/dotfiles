@@ -12,6 +12,7 @@ set foldmethod=manual	" Folds must be created manually.
 if version >= 700
   set cursorline	" Draw a horizontal line under the line being edited.
 endif
+set noincsearch
 
 set guifont=terminus\ 9
 set history=1000
