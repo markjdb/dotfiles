@@ -1,9 +1,3 @@
-case $(hostname) in
-wtl-lview-*|test*|wtllab-test-*)
-    . ${HOME}/.bash_sv
-    ;;
-esac
-
 prompt_prefix()
 {
     git branch >/dev/null 2>&1 && \
@@ -112,38 +106,6 @@ godoc()
     $(which godoc) $@ | less
 }
 
-cin()
-{
-    local cmsgfile
-
-    if ! which cleartool >/dev/null 2>&1; then
-        echo 1>&2 "cin: can't check in, cleartool isn't present"
-        return 1
-    fi
-
-    expr $(hostname -s) : wtl-lview-* || return
-    cmsgfile=$(mktemp)
-    if [ $? -ne 0 ]; then
-        cmsgfile=/tmp/commit
-        echo "" > $cmsgfile
-    fi
-
-    if [ -z "$EDITOR" ]; then
-        vim $cmsgfile
-    else
-        $EDITOR $cmsgfile
-    fi
-
-    if [ "$(stat -c '%s' $cmsgfile)" = 0 ]; then
-        echo 1>&2 "cin: aborting due to empty commit message"
-        rm -f $cmsgfile
-        return 1
-    fi
-
-    cleartool ci -cfile $cmsgfile $@
-    echo 1>&2 "cin: left commit message in $cmsgfile"
-}
-
 update-master()
 {
     local curr
@@ -157,26 +119,6 @@ update-master()
     git checkout master && git pull origin master && git pull && \
                            git push origin && git checkout "$curr"
     git fetch upstream refs/notes/*:refs/notes/*
-}
-
-sview()
-{
-    if [ $# -ne 1 ]; then
-        echo 1>&2 "usage: sview < view >"
-        return 1
-    elif ! which cleartool >/dev/null 2>&1; then
-        echo 1>&2 "sview: can't set view, cleartool isn't present"
-        return 1
-    fi
-
-    settitle $1
-    cleartool setview mjohnston_$1
-    settitle $(hostname -s)
-}
-
-startvbox()
-{
-    sudo kldload vboxdrv vboxnetadp
 }
 
 findf()
