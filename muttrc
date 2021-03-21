@@ -1,6 +1,6 @@
 set reverse_name
-set from="markjdb@gmail.com"
-alternates "markj@freebsd.org"
+set from="Mark Johnston <markj@FreeBSD.org>"
+alternates "Mark Johnston <markjdb@gmail.com>"
 set realname="Mark Johnston"
 
 set imap_user="markjdb@gmail.com"
