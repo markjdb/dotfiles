@@ -30,4 +30,4 @@
 		{\
 			git diff $(git merge-base "$1" HEAD)..HEAD;\
 		}; f"
-	rem = remote -v
+	mfc = cherry-pick -x -e
