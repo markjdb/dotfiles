@@ -52,6 +52,9 @@ inoremap <esc> <nop>
 nnoremap <leader>sv :source $MYVIMRC<CR>
 nnoremap <leader>ev :vsplit $MYVIMRC<CR>
 
+nnoremap <leader>sp :set paste<CR>i
+nnoremap <leader>snp :set nopaste<CR>
+
 nnoremap <space> :write<CR>
 " Frequent typos.
 command W write
