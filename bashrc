@@ -64,7 +64,7 @@ fi
 
 export PAGER='/usr/bin/less -i'
 export BUG_PROJECT=/home/mark/src/bugs
-[ $USER != mjohnston ] && export LC_CTYPE=en_US.UTF-8
+export LC_CTYPE=en_US.UTF-8
 export CVS_RSH=ssh
 
 # For u-boot builds.
