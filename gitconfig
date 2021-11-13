@@ -31,3 +31,6 @@
 			git diff $(git merge-base "$1" HEAD)..HEAD;\
 		}; f"
 	mfc = cherry-pick -x -e
+	fix = commit --fixup
+[pull]
+	ff = only
