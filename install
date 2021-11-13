@@ -28,10 +28,6 @@ xinitrc
 Xresources
 "
 
-ETCFILES="
-firewall
-"
-
 usage()
 {
     cat >&2 <<__EOF__
@@ -49,7 +45,7 @@ fi
 
 for file in ${FILES}; do
     if expr $file : '[a-zA-Z][a-zA-Z]*/' >/dev/null 2>&1; then
-        mkdir -p ${HOME}/.${file%%/*}
+        mkdir -p ${HOME}/.${file%/*}
     fi
     case $file in
     muttrc)
@@ -62,8 +58,4 @@ for file in ${FILES}; do
         continue
     fi
     ln -s $1 ${DOTFILESDIR}/$file ${HOME}/.$file
-done
-
-for file in ${ETCFILES}; do
-    ln -s $1 ${DOTFILESDIR}/etc/${file}.$(hostname -s) ${HOME}/etc/$file
 done
