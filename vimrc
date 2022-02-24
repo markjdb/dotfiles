@@ -1,3 +1,14 @@
+" Specify a directory for plugins
+" " - For Neovim: stdpath('data') . '/plugged'
+" " - Avoid using standard Vim directory names like 'plugin'
+call plug#begin('~/.vim/plugged')
+
+Plug 'tpope/vim-fugitive'
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+
+" Initialize plugin system
+call plug#end()
+
 set autoindent
 set smartindent
 set nobackup		" Don't back up my file when I save.
@@ -37,9 +48,9 @@ filetype indent on
 nnoremap ' `
 nnoremap ` '
 
-" Treat wrapped lines as separate lines.
-map k gk
-map j gj
+" Treat wrapped lines as separate lines when navigating.
+nnoremap k gk
+nnoremap j gj
 
 " Convert the previous word to upper case.
 inoremap <c-u> <esc>hviwUea
@@ -47,6 +58,12 @@ inoremap <c-u> <esc>hviwUea
 " Insert mode sequence to enter normal mode.
 inoremap jk <esc>
 inoremap <esc> <nop>
+
+" Paste yanked text
+" XXX jk = <esc> but how do I encode this? 
+" XXX doesn't work in paste mode
+imap <C-S-Insert> jk"*pi
+"imap! <C-S-Insert> <C-r>"
 
 " Reload .vimrc.
 nnoremap <leader>sv :source $MYVIMRC<CR>
@@ -98,45 +115,62 @@ if $CSCOPE_DB != ""
 endif
 set cscopeverbose
 
+" Now here's a truly ugly thing.
+function FindCscopeDB()
+	let db = system(printf("awk '/^%s/{print $2}' ${HOME}/src/cscope2/files", escape(expand('%:p'), '/')))
+	let db = printf("/usr/home/markj/src/cscope2/%s", db)
+	" Apparently we have to strip the nul terminator...
+	exe "cs add " . db[:-2]
+endfunction
+
+command -nargs=0 Cadd call FindCscopeDB()
+
 command -nargs=1 Ca cs find a <args>
 nnoremap <C-\>a :cs find a <C-R>=expand("<cword>")<CR><CR>
 nnoremap <C-\>la :cs find a <C-R>=tolower(expand("<cword>"))<CR><CR>
+nnoremap <C-\>ua :cs find a <C-R>=toupper(expand("<cword>"))<CR><CR>
 nnoremap <C-@>a :scs find a <C-R>=expand("<cword>")<CR><CR>
 nnoremap <C-@><C-@>a :vert scs find a <C-R>=expand("<cword>")<CR><CR>
 
 command -nargs=1 Cc cs find c <args>
 nnoremap <C-\>c :cs find c <C-R>=expand("<cword>")<CR><CR>
 nnoremap <C-\>lc :cs find c <C-R>=tolower(expand("<cword>"))<CR><CR>
+nnoremap <C-\>uc :cs find c <C-R>=toupper(expand("<cword>"))<CR><CR>
 nnoremap <C-@>c :scs find c <C-R>=expand("<cword>")<CR><CR>
 nnoremap <C-@><C-@>c :vert scs find c <C-R>=expand("<cword>")<CR><CR>
 
 command -nargs=1 Cd cs find d <args>
 nnoremap <C-\>d :cs find d <C-R>=expand("<cword>")<CR><CR>
 nnoremap <C-\>ld :cs find d <C-R>=tolower(expand("<cword>"))<CR><CR>
+nnoremap <C-\>ud :cs find d <C-R>=toupper(expand("<cword>"))<CR><CR>
 nnoremap <C-@>d :cs find d <C-R>=expand("<cword>")<CR><CR>
 nnoremap <C-@><C-@>d :vert cs find d <C-R>=expand("<cword>")<CR><CR>
 
 command -nargs=1 Ce cs find e <args>
 nnoremap <C-\>e :cs find e <C-R>=expand("<cword>")<CR><CR>
 nnoremap <C-\>le :cs find e <C-R>=tolower(expand("<cword>"))<CR><CR>
+nnoremap <C-\>ue :cs find e <C-R>=toupper(expand("<cword>"))<CR><CR>
 nnoremap <C-@>e :cs find e <C-R>=expand("<cword>")<CR><CR>
 nnoremap <C-@><C-@>e :vert cs find e <C-R>=expand("<cword>")<CR><CR>
 
 command -nargs=1 Cf cs find f <args>
 nnoremap <C-\>f :cs find f <C-R>=expand("<cfile>")<CR><CR>
 nnoremap <C-\>lf :cs find f <C-R>=tolower(expand("<cfile>"))<CR><CR>
+nnoremap <C-\>uf :cs find f <C-R>=toupper(expand("<cfile>"))<CR><CR>
 nnoremap <C-@>f :cs find f <C-R>=expand("<cfile>")<CR><CR>
 nnoremap <C-@><C-@>f :vert cs find f <C-R>=expand("<cfile>")<CR><CR>
 
 command -nargs=1 Cg cs find g <args>
 nnoremap <C-\>g :cs find g <C-R>=expand("<cword>")<CR><CR>
 nnoremap <C-\>lg :cs find g <C-R>=tolower(expand("<cword>"))<CR><CR>
+nnoremap <C-\>ug :cs find g <C-R>=toupper(expand("<cword>"))<CR><CR>
 nnoremap <C-@>g :cs find g <C-R>=expand("<cword>")<CR><CR>
 nnoremap <C-@><C-@>g :vert cs find g <C-R>=expand("<cword>")<CR><CR>
 
 command -nargs=1 Cs cs find s <args>
 nnoremap <C-\>s :cs find s <C-R>=expand("<cword>")<CR><CR>
 nnoremap <C-\>ls :cs find s <C-R>=tolower(expand("<cword>"))<CR><CR>
+nnoremap <C-\>us :cs find s <C-R>=toupper(expand("<cword>"))<CR><CR>
 nnoremap <C-@>s :cs find s <C-R>=expand("<cword>")<CR><CR>
 nnoremap <C-@><C-@>s :vert cs find s <C-R>=expand("<cword>")<CR><CR>
 
