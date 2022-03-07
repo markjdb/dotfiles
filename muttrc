@@ -4,6 +4,7 @@ alternates "Mark Johnston <markjdb@gmail.com>"
 set realname="Mark Johnston"
 
 set imap_user="markjdb@gmail.com"
+set imap_pass=`pass show email/markjdb-imap`
 
 # Remote folders
 set folder="imaps://imap.gmail.com:993"
@@ -16,6 +17,7 @@ set message_cachedir=~/.mutt/cache/bodies
 set certificate_file=~/.mutt/certificates
 
 set smtp_url="smtp://markjdb@smtp.gmail.com:587/"
+set smtp_pass=`pass show email/markjdb-imap`
 set timeout=30 # select(2) timeout
 set imap_keepalive=30
 set mail_check=60
