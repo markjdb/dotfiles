@@ -70,13 +70,6 @@ export CVS_RSH=ssh
 # For u-boot builds.
 export CROSS_COMPILE=arm-elf-
 
-case $(uname) in
-FreeBSD)
-    export GOOS=freebsd
-    export GOROOT=/usr/local/go
-    ;;
-esac
-
 export DIFF_TOOL="diff -u"
 
 [ -f $HOME/bin/scripts/cscope.sh ] && source $HOME/bin/scripts/cscope.sh
