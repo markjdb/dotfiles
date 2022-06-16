@@ -36,7 +36,6 @@ alias svns='svn status'
 alias svnu='svn update'
 
 alias gdb='gdb -q' # Supress banner
-alias mytree="find . -type d | sed -e 1d -e 's/[^-][^\/]*\//--/g' -e 's/^/ /' -e 's/-/|-/'"
 alias startx='exec startx'
 alias mounts='mount | column -t'
 alias unsrc='tar -C ~/src -xvf'
@@ -64,3 +63,6 @@ alias i3lock="i3lock -c 000000"
 alias mytop="top -SHza -s 1"
 
 alias bootfile="sysctl -n kern.bootfile"
+
+alias cdpwd='cd $(pwd)'
+alias cdobj='cd $(make -V.OBJDIR)'
