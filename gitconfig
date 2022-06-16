@@ -34,3 +34,5 @@
 	fix = commit --fixup
 [pull]
 	ff = only
+[commit]
+	verbose = true
