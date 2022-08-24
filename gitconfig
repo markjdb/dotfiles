@@ -36,3 +36,8 @@
 	ff = only
 [commit]
 	verbose = true
+[arc]
+	browse = true
+	assume-yes = true
+[pager]
+	arc = true
