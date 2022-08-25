@@ -64,6 +64,10 @@ if !has('nvim')
 	set viminfo='10,\"100,:20,%,n~/.viminfo
 endif
 
+" Disable mouse support, it screws up highlighting when running vim in a split
+" tmux pane.
+set mouse=
+
 " Colours.
 set t_Co=256
 set background=dark
