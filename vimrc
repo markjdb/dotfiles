@@ -119,7 +119,7 @@ command Wq write | quit
 command WQ write | quit
 
 " Start FreeBSD development.
-nnoremap <leader>cdbsd :cd ~/src/freebsd<CR>:Cadd<CR>:NERDTree<CR>
+nnoremap <leader>cdbsd :cd ~/src/freebsd<CR>:call CscopeMgrLoadDirDB("/usr/home/markj/src/freebsd/sys")<CR>:NERDTree<CR>
 
 """""""""""""""""""""""""""""""""""" Filetype stuff
 
