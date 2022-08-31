@@ -24,6 +24,8 @@ set mail_check=60
 
 set move=no # Don't move read messages to my mbox.
 
+source ~/.mutt/gpg.rc
+
 # Appearance
 set sort="threads"
 set sort_aux="last-date-received"
