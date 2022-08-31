@@ -94,12 +94,6 @@ inoremap <c-u> <esc>hviwUea
 inoremap jk <esc>
 inoremap <esc> <nop>
 
-" Paste yanked text
-" XXX jk = <esc> but how do I encode this? 
-" XXX doesn't work in paste mode
-"imap <C-S-Insert> jk"*pi
-"imap! <C-S-Insert> <C-r>"
-
 " Remove trailing whitespace in the current buffer.
 nnoremap <leader>rmws :%s/\s\+$//<CR>
 
@@ -120,6 +114,9 @@ command WQ write | quit
 
 " Start FreeBSD development.
 nnoremap <leader>cdbsd :cd ~/src/freebsd<CR>:call CscopeMgrLoadDirDB("/usr/home/markj/src/freebsd/sys")<CR>:NERDTree<CR>
+
+" Open help for word under the cursor.
+nnoremap <leader>h :execute("help " . expand("<cword>"))<CR>
 
 """""""""""""""""""""""""""""""""""" Filetype stuff
 
@@ -159,21 +156,9 @@ if $CSCOPE_DB != ""
 endif
 set cscopeverbose
 
-" Now here's a truly ugly thing.
-function FindCscopeDB()
-	if len(expand('%')) == 0
-		let db = system(printf("awk '/%s\$/{print $1}' ${HOME}/src/cscope2/dbs", escape(getcwd(), '/')))
-		let db = printf("/usr/home/markj/src/cscope2/%s", db)
-		exe "cs add " . db[:-2]
-	else
-		let db = system(printf("awk '/^%s/{print $2}' ${HOME}/src/cscope2/files", escape(expand('%:p'), '/')))
-		let db = printf("/usr/home/markj/src/cscope2/%s", db)
-		" Apparently we have to strip the nul terminator...
-		exe "cs add " . db[:-2]
-	endif
-endfunction
-
-command -nargs=0 Cadd call FindCscopeDB()
+nnoremap <leader>cadd :call CscopeMgrLoadDB()<CR>
+nnoremap <leader>cnew :call CscopeMgrAdd()<CR>
+nnoremap <leader>creg :call CscopeMgrRegen()<CR>
 
 command -nargs=1 Ca cs find a <args>
 nnoremap <C-\>a :cs find a <C-R>=expand("<cword>")<CR><CR>
