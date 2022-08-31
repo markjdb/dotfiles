@@ -39,5 +39,3 @@
 [arc]
 	browse = true
 	assume-yes = true
-[pager]
-	arc = true
