@@ -11,6 +11,7 @@ emacs
 gdbinit
 gitconfig
 gitignore
+inputrc
 irssi/config
 irssi/scripts/nickcolor.pl
 mergemasterrc
