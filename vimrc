@@ -159,6 +159,7 @@ set cscopeverbose
 nnoremap <leader>cadd :call CscopeMgrLoadDB()<CR>
 nnoremap <leader>cnew :call CscopeMgrAdd()<CR>
 nnoremap <leader>creg :call CscopeMgrRegen()<CR>
+nnoremap <leader>csel :call CscopeMgrSelect()<CR>
 
 command -nargs=1 Ca cs find a <args>
 nnoremap <C-\>a :cs find a <C-R>=expand("<cword>")<CR><CR>
