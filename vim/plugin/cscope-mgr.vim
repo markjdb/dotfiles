@@ -32,7 +32,7 @@ endfunction
 " XXX-MJ make this asynchronous.
 " XXX-MJ want some way to serialize this maybe? perhaps not important...
 function s:regendb(dir)
-    call system("cd ". a:dir . " && find . -type f -name \\*.[chsS] | cscope -bqk -i- -f " . s:dbpath(a:dir))
+    call system("cd ". a:dir . " && find . -type f -name \\*.[chsS] -o -name \\*.cpp -o -name \\*.hpp -o -name \\*.cc | cscope -bqk -i- -f " . s:dbpath(a:dir))
 endfunction
 
 function s:rmdb(dir)
