@@ -118,6 +118,13 @@ nnoremap <leader>cdbsd :cd ~/src/freebsd<CR>:call CscopeMgrLoadDirDB("/usr/home/
 " Open help for word under the cursor.
 nnoremap <leader>h :execute("help " . expand("<cword>"))<CR>
 
+" Make the "insert" key work in gvim.
+if has("gui_running")
+    cnoremap <C-S-Insert> <C-r>+
+    inoremap <C-S-Insert> <C-r>+
+    nnoremap <C-S-Insert> "*p
+endif
+
 """""""""""""""""""""""""""""""""""" Filetype stuff
 
 " Restore the seek position from the last time we edited this file.
