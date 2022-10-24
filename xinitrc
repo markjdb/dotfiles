@@ -52,4 +52,7 @@ fi
 
 xrdb ${HOME}/.Xresources
 
+eval `dbus-launch --sh-syntax --exit-with-session`
+fcitx5 &
+
 exec dwm
