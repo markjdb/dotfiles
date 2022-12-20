@@ -153,7 +153,7 @@ function g:CscopeMgrAdd()
     call s:warn("Enter root source path for new cscope DB")
     while 1
         " XXX-MJ how can we get path completion?
-        let dir = input("", currdir)
+        let dir = trim(input("", currdir), "/", 2)
         if len(dir) == 0
             call s:warn("Invalid source path '" . dir . "'")
         elseif dir[0] != '/'

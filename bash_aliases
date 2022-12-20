@@ -35,6 +35,8 @@ alias svnl='svn log | less'
 alias svns='svn status'
 alias svnu='svn update'
 
+alias vim='nvim'
+
 alias gdb='gdb -q' # Supress banner
 alias startx='exec startx'
 alias mounts='mount | column -t'
