@@ -64,3 +64,5 @@ done
 
 mkdir -p ${HOME}/.config/nvim
 ln -s $1 ${DOTFILESDIR}/vimrc ${HOME}/.config/nvim/init.vim
+ln -s $1 ${DOTFILESDIR}/vim/plugin ${HOME}/.config/nvim/plugin
+ln -s $1 ${DOTFILESDIR}/vim/ftplugin ${HOME}/.config/nvim/ftplugin
