@@ -35,14 +35,15 @@ alias svnl='svn log | less'
 alias svns='svn status'
 alias svnu='svn update'
 
-alias vim='nvim'
+if which nvim >/dev/null 2>&1; then
+    alias vim='nvim'
+fi
 
 alias gdb='gdb -q' # Supress banner
 alias startx='exec startx'
 alias mounts='mount | column -t'
 alias unsrc='tar -C ~/src -xvf'
 alias df='df -h'
-alias mutt='settitle mail && mutt && settitle $(hostname -s)'
 alias ripcd='settitle CDs && cdparanoia -B && sleep 2 && camcontrol eject cd0'
 alias wav2flac_dir='rm -f track00.cdda.wav && for file in *.wav ; do flac "$file"; done'
 alias battery='sysctl -n hw.acpi.battery.life'
