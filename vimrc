@@ -45,6 +45,7 @@ set noincsearch		" Disable incremental searching.
 set history=10000
 set wildmenu		" Create a nice menu when auto-completing file names.
 set scrolloff=5		" Keep a minimum of 5 lines above and below the cursor.
+set joinspaces		" Add two spaces after ".", "?" when reindenting text.
 
 " Default split layout, these feel more natural than the defaults.
 set splitbelow
