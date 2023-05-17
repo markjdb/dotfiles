@@ -61,11 +61,20 @@ alias masmi="make && sudo make install"
 alias mami="make && make install"
 alias mcam="make clean && make"
 
-alias i3lock="i3lock -c 000000"
-
 alias mytop="top -SHza -s 1"
 
 alias bootfile="sysctl -n kern.bootfile"
 
 alias cdpwd='cd $(pwd)'
 alias cdobj='cd $(make -V.OBJDIR)'
+
+alias newbugs="bugzilla query --from-url 'https://bugs.freebsd.org/bugzilla/buglist.cgi?f1=creation_ts&list_id=520913&o1=greaterthaneq&product=Base%20System&v1='$(date -v -14d "+%Y-%m-%d")"
+openbug()
+{
+	if [ $# -ne 1 ]; then
+		echo "usage: openbug <PR>" >&2
+		return 1
+	fi
+
+	xdg-open 'https://bugs.freebsd.org/bugzilla/show_bug.cgi?id='"$1"
+}
