@@ -69,9 +69,6 @@ export BUG_PROJECT=/home/mark/src/bugs
 export LC_CTYPE=en_US.UTF-8
 export CVS_RSH=ssh
 
-# For u-boot builds.
-export CROSS_COMPILE=arm-elf-
-
 export DIFF_TOOL="diff -u"
 
 [ -f $HOME/bin/scripts/cscope.sh ] && source $HOME/bin/scripts/cscope.sh
