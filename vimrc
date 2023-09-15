@@ -138,6 +138,22 @@ if has("gui_running")
     nnoremap <C-S-Insert> "*p
 endif
 
+"""""""""""""""""" vim-fugitive mappings
+
+nnoremap <leader>Ga :G add %<CR>
+nnoremap <leader>Gb :G blame<CR>
+nnoremap <leader>Gs :G status<CR>
+nnoremap <leader>Gd :G diff<CR>
+nnoremap <leader>Gp :G push<CR>
+nnoremap <leader>Gpf :G push -f<CR>
+
+nnoremap <leader>Gc :G commit<CR>
+nnoremap <leader>Gca :G commit --amend<CR>
+nnoremap <leader>GcA :G commit --amend --no-edit<CR>
+nnoremap <leader>Gcp :G cherry-pick 
+
+nnoremap <leader>Grc :G rebase --continue<CR>
+
 """""""""""""""""""""""""""""""""""" Filetype stuff
 
 " Restore the seek position from the last time we edited this file.
@@ -163,6 +179,7 @@ au BufNewFile svn-commit\.*tmp set wrap tw=76
 
 iabbrev sbff Sponsored by:	The FreeBSD Foundation
 iabbrev sbklara Sponsored by:	Klara, Inc.
+iabbrev sbinno Sponsored by:	Innovate UK
 iabbrev sob Signed-off-by: Mark Johnston <markj@FreeBSD.org>
 iabbrev markjcr Copyright (c) 2022 Mark Johnston <markj@FreeBSD.org>
 iabbrev debugprint printf("%s:%d\n", __func__, __LINE__);
