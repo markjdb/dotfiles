@@ -14,6 +14,9 @@ Plug 'preservim/nerdtree'
 if has('nvim')
 	Plug 'neovim/nvim-lspconfig'
 
+	Plug 'nvim-lua/plenary.nvim'
+	Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.3' }
+
 	Plug 'hrsh7th/cmp-nvim-lsp'
 	Plug 'hrsh7th/cmp-buffer'
 	Plug 'hrsh7th/cmp-path'
