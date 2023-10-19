@@ -1,12 +1,12 @@
 """""""""""""""""""""""""" cscope stuff
 
-set cscopetag
+"set cscopetag
 " Suppress an error if .vimrc is sourced after the DB is added.
-set nocscopeverbose
-if $CSCOPE_DB != ""
-    cs add $CSCOPE_DB
-endif
-set cscopeverbose
+"set nocscopeverbose
+"if $CSCOPE_DB != ""
+"    cs add $CSCOPE_DB
+"endif
+"set cscopeverbose
 
 nnoremap <leader>cadd :Cscope open<CR>
 nnoremap <leader>cnew :Cscope add<CR>
