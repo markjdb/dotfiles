@@ -25,6 +25,8 @@ if has('nvim')
 	Plug 'hrsh7th/cmp-vsnip'
 	Plug 'hrsh7th/vim-vsnip'
         set completeopt=menu,menuone,noselect
+
+	Plug 'markjdb/nvim-cscope'
 endif
 
 " Initialize plugin system
