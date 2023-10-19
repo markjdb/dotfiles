@@ -53,6 +53,9 @@ fi
 xrdb ${HOME}/.Xresources
 
 eval `dbus-launch --sh-syntax --exit-with-session`
-fcitx5 &
+GTK_IM_MODULE=fcitx
+QT_IM_MODULE=fcitx
+XMODIFIERS=@im=fcitx
+fcitx5 -d
 
 exec dwm
