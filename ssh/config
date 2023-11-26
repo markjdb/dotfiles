@@ -3,3 +3,6 @@ Host freefall
 
 Host *.freebsd.org
 	User markj
+
+Host github.com
+	IdentityFile /home/markj/.ssh/id_ed25519_github
