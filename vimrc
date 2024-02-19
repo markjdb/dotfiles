@@ -26,6 +26,8 @@ if has('nvim')
 	Plug 'hrsh7th/vim-vsnip'
         set completeopt=menu,menuone,noselect
 
+	Plug 'junegunn/fzf'
+
 	Plug 'markjdb/nvim-cscope'
 endif
 
@@ -70,6 +72,9 @@ set t_Co=256
 set background=dark
 colorscheme torte
 syntax enable
+
+" Show the file name and git branch.
+set statusline=%f%=%{FugitiveStatusline()}\ %v
 
 """"""""""""""""""""""""""""""""""" COC plugin stuff
 
@@ -130,9 +135,6 @@ command Q quit
 command Wq write | quit
 command WQ write | quit
 
-" Start FreeBSD development.
-nnoremap <leader>cdbsd :cd ~/src/freebsd<CR>:call CscopeMgrLoadDirDB("/usr/home/markj/src/freebsd/sys")<CR>:NERDTree<CR>
-
 " Open help for word under the cursor.
 nnoremap <leader>h :execute("help " . expand("<cword>"))<CR>
 
@@ -143,6 +145,9 @@ if has("gui_running")
     nnoremap <C-S-Insert> "*p
 endif
 
+"""""""""""""""""" fzf mappings
+nnoremap <leader>F :FZF<CR>
+
 """""""""""""""""" vim-fugitive mappings
 
 nnoremap <leader>Ga :G add %<CR>
@@ -151,6 +156,8 @@ nnoremap <leader>Gs :G status<CR>
 nnoremap <leader>Gd :G diff<CR>
 nnoremap <leader>Gp :G push<CR>
 nnoremap <leader>Gpf :G push -f<CR>
+nnoremap <leader>Gg :G grep -n <cword><CR>
+nnoremap <leader>Gln :G log -n 100<CR>
 
 nnoremap <leader>Gc :G commit<CR>
 nnoremap <leader>Gca :G commit --amend<CR>

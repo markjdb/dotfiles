@@ -57,7 +57,7 @@ fi
 
 alias tmux="TERM=screen-256color tmux"
 
-alias masmi="make && sudo make install"
+alias masmi="make && sudo -E make install"
 alias mami="make && make install"
 alias mcam="make clean && make"
 

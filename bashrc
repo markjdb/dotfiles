@@ -47,14 +47,17 @@ PS1='$(prompt_prefix)\u@\h> '
 
 unset PPROC
 
-export HISTFILESIZE=100000
-export HISTSIZE=10000
+export HISTFILESIZE=10000000
+export HISTSIZE=100000
 shopt -s histappend
 set -o vi
 
-PATH=${PATH}:${HOME}/bin:${HOME}/bin/scripts:${HOME}/bin/scripts/dtrace
+PATH=${PATH}:${HOME}/bin:${HOME}/bin/scripts:${HOME}/bin/scripts/dtrace:${HOME}/bin/sb-tools:${HOME}/src/bricoler
 PATH=${PATH}:${HOME}/bin/scripts/contrib
 PATH=${PATH}:${HOME}/go/bin
+if [ -n "${SB_PATH}" ]; then
+    PATH=${PATH}:${SB_PATH}
+fi
 
 if which nvim >/dev/null 2>&1; then
     export EDITOR=$(which nvim)
@@ -197,3 +200,21 @@ _python_argcomplete() {
     fi
 }
 complete -o nospace -o default -o bashdefault -F _python_argcomplete ./cheribuild.py
+
+backup()
+{
+    local file
+
+    if [ $# -ne 1 ]; then
+        echo "backup: no file specified" >&2
+        return 1
+    fi
+
+    file="$1"
+    if [ ! -f "$file" ]; then
+        echo "backup: $file doesn't exist" >&2
+        return 1
+    fi
+
+    cp -p "$file" "$file.orig"
+}
