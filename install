@@ -18,6 +18,7 @@ mergemasterrc
 mutt/gpg.rc
 muttrc
 rtorrent.rc
+sandboxrc
 screenrc
 signature
 ssh/config

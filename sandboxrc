@@ -1,0 +1,73 @@
+# vim: set syntax=sh et sw=4
+
+. $SB_TOOLS/os.sh
+. $SB_TOOLS/test_opt.sh
+
+SB_BASE=${HOME}/sb
+
+add_hooks mksb_pre_create_hooks mksb_pre_create
+mksb_pre_create() {
+    [ -z "$SB_PROJECT" ] && warning "No project specified"
+}
+
+# Canonicalize the project name and associated variables.
+add_hooks sb_init_hooks sb_project
+sb_project() {
+    _p=${1:-$SB_PROJECT}
+
+    case "$_p" in
+    freebsd*|FreeBSD*|FREEBSD*)
+        SB_PROJECT=FreeBSD
+        SB_SCM=git
+        SB_SRC=src
+        ;;
+    esac
+    :
+}
+
+add_hooks mksb_checkout_hooks freebsd_checkout
+freebsd_checkout() {
+    [ "$SB_PROJECT" = FreeBSD ] || return
+
+    test -d "$SB_SRC" || \
+    (
+        set -e
+
+        git clone file://${HOME}/src/freebsd $SB_SRC
+        cd $SB_SRC
+        git remote rm origin
+        git remote add origin git@github.com:markjdb/freebsd
+        git remote add anon anongit@git.freebsd.org:src.git
+        git remote add freebsd git@gitrepo.freebsd.org:src.git
+        git remote add freebsd-github https://github.com/freebsd/freebsd-src
+        git fetch anon main
+        git branch --set-upstream-to=anon/main
+    )
+    mkdir -p bin
+    mkdir -p obj
+    mkdir -p bricoler
+}
+
+add_hooks mksb_env_finish_hooks freebsd_env_finish
+freebsd_env_finish() {
+    [ "$SB_PROJECT" = FreeBSD ] || return
+
+    MAKEOBJDIRPREFIX="${SB}/obj"
+    expShellDefVars MAKEOBJDIRPREFIX
+    BRICOLER_WORKDIR="${SB}/bricoler"
+    expShellDefVars BRICOLER_WORKDIR
+}
+
+add_hooks workon_run_hooks freebsd_workon
+freebsd_workon() {
+    if ! tmux has-session -t $SB_NAME 2>/dev/null; then
+        . ${SB}/.sandbox-env
+        tmux new-session -d -s $SB_NAME \
+            -e SB=${SB} \
+            -e SB_NAME=${SB_NAME} \
+            -e SB_PATH=${SB}/bin \
+	    -e MAKEOBJDIRPREFIX=${MAKEOBJDIRPREFIX} \
+	    -e BRICOLER_WORKDIR=${BRICOLER_WORKDIR}
+    fi
+    exec tmux attach-session -t $SB_NAME
+}
