@@ -1,5 +1,3 @@
-# vim: set syntax=sh et sw=4
-
 . $SB_TOOLS/os.sh
 . $SB_TOOLS/test_opt.sh
 
@@ -8,6 +6,9 @@ SB_BASE=${HOME}/sb
 add_hooks mksb_pre_create_hooks mksb_pre_create
 mksb_pre_create() {
     [ -z "$SB_PROJECT" ] && warning "No project specified"
+    warning "Creating ZFS dataset, this may require root privileges"
+    sudo zfs create zroot/home/markj/sb/${SB_NAME} || error "Failed to create ZFS dataset"
+    sudo chown markj:markj /home/markj/sb/${SB_NAME}
 }
 
 # Canonicalize the project name and associated variables.
@@ -66,8 +67,10 @@ freebsd_workon() {
             -e SB=${SB} \
             -e SB_NAME=${SB_NAME} \
             -e SB_PATH=${SB}/bin \
-	    -e MAKEOBJDIRPREFIX=${MAKEOBJDIRPREFIX} \
-	    -e BRICOLER_WORKDIR=${BRICOLER_WORKDIR}
+            -e MAKEOBJDIRPREFIX=${MAKEOBJDIRPREFIX} \
+            -e BRICOLER_WORKDIR=${BRICOLER_WORKDIR}
     fi
     exec tmux attach-session -t $SB_NAME
 }
+
+# vim: set syntax=sh
