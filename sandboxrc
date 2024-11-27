@@ -61,8 +61,14 @@ freebsd_env_finish() {
 
 add_hooks workon_run_hooks freebsd_workon
 freebsd_workon() {
-    if ! tmux has-session -t $SB_NAME 2>/dev/null; then
+    local key
+
+    if ! tmux has-session -t=$SB_NAME 2>/dev/null; then
         . ${SB}/.sandbox-env
+        eval $(ssh-agent)
+        for key in ${SB_SSH_KEYS}; do
+            ssh-add ${HOME}/.ssh/$key
+        done
         tmux new-session -d -s $SB_NAME \
             -e SB=${SB} \
             -e SB_NAME=${SB_NAME} \
