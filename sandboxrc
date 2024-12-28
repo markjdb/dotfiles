@@ -22,36 +22,65 @@ sb_project() {
         SB_SCM=git
         SB_SRC=src
         ;;
+    cheribsd*|CheriBSD*|CHERIBSD*)
+        SB_PROJECT=CheriBSD
+        SB_SCM=git
+        SB_SRC=src
+        ;;
     esac
     :
 }
 
 add_hooks mksb_checkout_hooks freebsd_checkout
 freebsd_checkout() {
-    [ "$SB_PROJECT" = FreeBSD ] || return
+    [ "$SB_PROJECT" = FreeBSD -o "$SB_PROJECT" = CheriBSD ] || return
 
     test -d "$SB_SRC" || \
     (
         set -e
 
-        git clone file://${HOME}/src/freebsd $SB_SRC
+        local lrepo rrepo repo
+
+        # Is there a local repo?  Clone that one instead for speed.
+        if [ $SB_PROJECT = FreeBSD ]; then
+            lrepo=${HOME}/src/freebsd
+            rrepo=https://github.com/freebsd/freebsd
+        else
+            lrepo=${HOME}/src/cheribsd
+            rrepo=https://github.com/CTSRD-CHERI/cheribsd
+        fi
+        if [ -d $lrepo ]; then
+            repo=file://$lrepo
+        else
+            warning "No local repo found, fetching everything from GitHub"
+            repo=$rrepo
+        fi
+        git clone $repo $SB_SRC
+
         cd $SB_SRC
         git remote rm origin
-        git remote add origin git@github.com:markjdb/freebsd
-        git remote add anon anongit@git.freebsd.org:src.git
+        if [ $SB_PROJECT = FreeBSD ]; then
+            git remote add origin git@github.com:markjdb/freebsd
+        else
+            git remote add origin git@github.com:markjdb/cheribsd
+            git remote add upstream https://github.com/CTSRD-CHERI/cheribsd
+        fi
         git remote add freebsd git@gitrepo.freebsd.org:src.git
         git remote add freebsd-github https://github.com/freebsd/freebsd-src
+        git remote add anon anongit@git.freebsd.org:src.git
         git fetch anon main
-        git branch --set-upstream-to=anon/main
+        if [ $SB_PROJECT = FreeBSD ]; then
+            git checkout main
+            git reset --hard anon/main
+            git branch --set-upstream-to=anon/main
+        fi
     )
-    mkdir -p bin
-    mkdir -p obj
-    mkdir -p bricoler
+    mkdir -p bin obj bricoler
 }
 
 add_hooks mksb_env_finish_hooks freebsd_env_finish
 freebsd_env_finish() {
-    [ "$SB_PROJECT" = FreeBSD ] || return
+    [ "$SB_PROJECT" = FreeBSD -o "$SB_PROJECT" = CheriBSD ] || return
 
     MAKEOBJDIRPREFIX="${SB}/obj"
     expShellDefVars MAKEOBJDIRPREFIX
