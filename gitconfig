@@ -31,7 +31,7 @@
 			git diff $(git merge-base "$1" HEAD)..HEAD;\
 		}; f"
 	mfc = cherry-pick -x -e
-	fix = commit --fixup
+	fix = "!f() { git commit -e -m \"Fixes:	$(git log -n 1 --format='%h (\"%s\")' $1)\";}; f"
 [pull]
 	ff = only
 [commit]
