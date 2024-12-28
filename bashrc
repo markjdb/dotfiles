@@ -86,6 +86,9 @@ fi
 [ -f /usr/local/share/git-core/contrib/completion/git-completion.bash ] && \
     source /usr/local/share/git-core/contrib/completion/git-completion.bash
 
+[ -f /home/markj/src/bricoler/bricoler-completion.bash ] &&
+    source /home/markj/src/bricoler/bricoler-completion.bash
+
 aiff2mp3()
 {
     if [ $# -ne 1 ]; then
