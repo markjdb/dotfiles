@@ -74,7 +74,7 @@ colorscheme torte
 syntax enable
 
 " Show the file name and git branch.
-set statusline=%f%=%{FugitiveStatusline()}\ %v
+set statusline=%f%5n%=%{FugitiveStatusline()}\ %v
 
 """"""""""""""""""""""""""""""""""" COC plugin stuff
 
@@ -147,6 +147,10 @@ endif
 
 """""""""""""""""" fzf mappings
 nnoremap <leader>F :FZF<CR>
+
+"""""""""""""""""" Telescope mappings
+nnoremap <leader>Tb :Telescope buffers<CR>
+nnoremap <leader>Tf :Telescope find_files<CR>
 
 """""""""""""""""" vim-fugitive mappings
 
