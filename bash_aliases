@@ -78,3 +78,21 @@ openbug()
 
 	xdg-open 'https://bugs.freebsd.org/bugzilla/show_bug.cgi?id='"$1"
 }
+
+phabpatch()
+{
+    if [ $# -ne 1 ]; then
+        echo "usage: phabpatch <revision>" >&2
+        return 1
+    fi
+    fetch -o /dev/stdout "https://reviews.freebsd.org/${1}.diff" | patch
+}
+
+fetchghpr()
+{
+    if [ $# -ne 1 ]; then
+        echo "usage: fetchghpr <PR>" >&2
+        return 1
+    fi
+    git fetch github pull/${1}/head:pr${1}
+}
