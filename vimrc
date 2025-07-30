@@ -102,6 +102,10 @@ set statusline=%f%5n%=%{FugitiveStatusline()}\ %v
 
 """"""""""""""""""""""""""""""""""""" Mappings
 
+imap <silent><script><expr> <C-T> copilot#Accept("\<CR>")
+let g:copilot_no_tab_map = v:true
+imap <C-L> <Plug>(copilot-accept-line)
+
 " Jump to the column of a mark when I hit '<mark>.
 nnoremap ' `
 nnoremap ` '
@@ -192,6 +196,9 @@ autocmd BufRead,BufNewFile *.[ch] call FreeBSD_Style() | set filetype=c
 autocmd BufRead,BufNewFile *.d set filetype=dtrace
 " Wrap commit messages at 76 columns.
 au BufNewFile svn-commit\.*tmp set wrap tw=76
+" The gitcommit filetype is supposed to set this, but something is overriding
+" it.
+au BufRead,BufNewFile */COMMIT_EDITMSG set tw=72
 
 iabbrev sbff Sponsored by:	The FreeBSD Foundation
 iabbrev sbklara Sponsored by:	Klara, Inc.
