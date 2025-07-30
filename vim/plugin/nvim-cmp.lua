@@ -60,10 +60,22 @@ cmp.setup.cmdline(':', {
 })
 
 -- Set up lspconfig.
+require('lspconfig').pylsp.setup {
+  capabilities = require('cmp_nvim_lsp').default_capabilities(),
+  settings = {
+    pylsp = {
+      plugins = {
+        pycodestyle = {
+          maxLineLength = 120,
+        }
+      }
+    }
+  }
+}
+
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
--- Replace <YOUR_LSP_SERVER> with each lsp server you've enabled.
 require('lspconfig').lua_ls.setup {
-  cmd = { '/usr/local/bin/lua-language-server', '--metapath', vim.fn.expand'~/.config/lua-language-server/meta' },
+  cmd = { '/home/markj/src/lua-language-server/bin/lua-language-server', '--metapath', vim.fn.expand'~/.config/lua-language-server/meta' },
   capabilities = capabilities,
   settings = {
     Lua = {
