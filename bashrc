@@ -52,7 +52,7 @@ export HISTSIZE=100000
 shopt -s histappend
 set -o vi
 
-PATH=${PATH}:${HOME}/bin:${HOME}/bin/scripts:${HOME}/bin/scripts/dtrace:${HOME}/bin/sb-tools:${HOME}/src/bricoler
+PATH=${PATH}:${HOME}/bin:${HOME}/bin/scripts:${HOME}/bin/scripts/dtrace:${HOME}/bin/sb-tools:${HOME}/.local/bin:${HOME}/src/bricoler
 PATH=${PATH}:${HOME}/bin/scripts/contrib
 PATH=${PATH}:${HOME}/go/bin
 if [ -n "${SB_PATH}" ]; then
