@@ -67,6 +67,7 @@ alias bootfile="sysctl -n kern.bootfile"
 
 alias cdpwd='cd $(pwd)'
 alias cdobj='cd $(make -V.OBJDIR)'
+alias cdsrc='cd ${SB}/${SB_SRC}'
 
 alias newbugs="bugzilla query --from-url 'https://bugs.freebsd.org/bugzilla/buglist.cgi?f1=creation_ts&list_id=520913&o1=greaterthaneq&product=Base%20System&v1='$(date -v -14d "+%Y-%m-%d")"
 openbug()
